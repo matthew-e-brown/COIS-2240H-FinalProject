@@ -1,4 +1,4 @@
-package sample;
+package kiosk;
 
 public class Controller {
 }
