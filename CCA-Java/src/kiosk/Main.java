@@ -22,11 +22,20 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         // launch(args);
-        ArrayList<String> types = generateTypes();
+        Connection conn = connectToDB();
+        Statement statement = getStatement(conn);
+
+
+        ArrayList<String> types = generateTypes(statement);
         for (String t : types) {
-            System.out.println(t);
+            ArrayList<String> items = itemsFromType(statement, t);
+            System.out.println("Type: " + t);
+            for (String x : items){
+                System.out.println(x);
+            }
+            System.out.println("");
         }
-       // closeConnection(statement, conn);
+        closeConnection(statement, conn);
     }
 
     public static Connection connectToDB() {
@@ -58,21 +67,29 @@ public class Main extends Application {
         }
 
     }
-    public static ArrayList<String> generateTypes(){
+    public static ArrayList<String> generateTypes(Statement statement){
         ArrayList<String> types = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:src\\menu.db");
-            System.out.println(conn);
-            Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("SELECT DISTINCT type FROM menu");
             while (rs.next()) {
                 types.add(rs.getString("type"));
             }
-            statement.close();
-            conn.close();
         } catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }
         return types;
     }
+    public static ArrayList<String> itemsFromType(Statement statement, String type){
+        ArrayList<String> items = new ArrayList<>();
+        try {
+            String sql = String.format("SELECT name FROM menu WHERE type='%s'", type);
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                items.add(rs.getString("name"));
+            }
+        }catch (SQLException e){
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+        return items;
+        }
 }
