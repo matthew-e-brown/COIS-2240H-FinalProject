@@ -1,5 +1,7 @@
 # IDEA Files
-CCA-Java/.idea/
+CCA-Java/.idea/workspace.xml
+CCA-Java/.idea/usage.statistics.xml
+CCA-Java/.idea/tasks.xml
 
 # Compiled class file
 *.class
