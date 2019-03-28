@@ -13,7 +13,7 @@ class Menu {
             while (rs.next()) { types.add(rs.getString("type")); }
 
             statement.close();
-        } catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
+        } catch (SQLException e) { e.printStackTrace(); }
         return types;
     }
 
@@ -27,7 +27,7 @@ class Menu {
                 rows.get(1).add(rs.getString("name"));
                 rows.get(2).add(((Float)rs.getFloat("price")).toString());
             }
-        } catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
+        } catch (SQLException e) { e.printStackTrace(); }
         return rows;
     }
 

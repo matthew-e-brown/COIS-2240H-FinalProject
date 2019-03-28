@@ -9,5 +9,5 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="kiosk.SplashController">
     <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
-    <ImageView><Image url="/img/Breakfast/EggMcMuffin.jpg" /></ImageView>
+    <ImageView><Image url="/img/splashScreen.png" /></ImageView>
 </AnchorPane>

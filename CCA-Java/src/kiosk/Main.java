@@ -24,9 +24,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        /* Open Window */
-        launch(args);
-
         /* ↓↓ Testing the DB Functions ↓↓ */
         Database DB = new Database("jdbc:sqlite:src\\master.db");
 
@@ -34,5 +31,8 @@ public class Main extends Application {
         Order.addToOrder(DB, "greasySticks", 3.69F);
 
         DB.closeConnection();
+
+        /* Open Window */
+        launch(args);
     }
 }

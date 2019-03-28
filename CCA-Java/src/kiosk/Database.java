@@ -17,7 +17,7 @@ class Database {
     void connectToDB(String filePath){
         Connection connection = null;
         try { connection = DriverManager.getConnection(filePath); }
-        catch (SQLException e){ System.out.println("Something went wrong: " + e.getMessage()); }
+        catch (SQLException e) { e.printStackTrace(); }
 
         this.connection = connection;
     }
@@ -25,13 +25,13 @@ class Database {
     /* Close Connection */
     void closeConnection() {
         try { this.connection.close(); }
-        catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
+        catch (SQLException e) { e.printStackTrace(); }
     }
 
     Statement makeStatement() {
         Statement statement = null;
         try { statement = this.connection.createStatement(); }
-        catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
+        catch (SQLException e) { e.printStackTrace(); }
 
         return statement;
     }
