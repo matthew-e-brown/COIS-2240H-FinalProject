@@ -1,16 +1,18 @@
+package kiosk;
+import java.sql.*;
 public class Database{
     String filepath;
     Connection conn;
 
     public Database(String filepath) {
         this.filepath = filepath;
-        connectToDB();
+        connectToDB(filepath);
     }
 
-    public void connectToDB(){
+    public void connectToDB(String filepath){
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection(String.format("jdbc:sqlite:%s", filepath);
+            conn = DriverManager.getConnection(filepath);
         }
         catch (SQLException e){
             System.out.println("Something went wrong: " + e.getMessage());
@@ -18,7 +20,7 @@ public class Database{
         this.conn = conn;
     }
 
-    public static Statement createStatement() {
+    public Statement makeStatement() {
         Statement statement = null;
         try {
             statement = this.conn.createStatement();
@@ -29,15 +31,12 @@ public class Database{
         return statement;
     }
 
-
-    public static void closeConnection() {
+    public void closeConnection() {
         try {
             this.conn.close();
         }
         catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }
-
     }
-
 }

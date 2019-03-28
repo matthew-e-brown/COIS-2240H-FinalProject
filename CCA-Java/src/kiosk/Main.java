@@ -22,12 +22,13 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         // launch(args);
-        Connection conn = connectToDB();
-        Statement statement = getStatement(conn);
+        Database DB = new Database("jdbc:sqlite:src\\menu.db");
 
-
-        ArrayList<String> types = generateTypes(statement);
-        for (String t : types) {
+        ArrayList<String> types = Menu.generateTypes(DB);
+        Order.addToOrder(DB, "greasysticks", 3.69F);
+        // need to delete the orders table when the customer is finished their transaction / when program ends
+        DB.closeConnection();
+        /*for (String t : types) {
             ArrayList<String> items = itemsFromType(statement, t);
             System.out.println("Type: " + t);
             for (String x : items){
@@ -35,37 +36,6 @@ public class Main extends Application {
             }
             System.out.println("");
         }
-        closeConnection(statement, conn);
+        closeConnection(statement, conn);*/
     }
-
-    public static Connection connectToDB() {
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:src\\menu.db");
-        } catch (SQLException e){
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return conn;
-    }
-
-    public static Statement getStatement(Connection conn) {
-        Statement statement = null;
-        try {
-            statement = conn.createStatement();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return statement;
-    }
-
-    public static void closeConnection(Statement statement, Connection conn) {
-        try {
-            statement.close();
-            conn.close();
-        } catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-
-    }
-
 }
