@@ -67,29 +67,5 @@ public class Main extends Application {
         }
 
     }
-    public static ArrayList<String> generateTypes(Statement statement){
-        ArrayList<String> types = new ArrayList<>();
-        try {
-            ResultSet rs = statement.executeQuery("SELECT DISTINCT type FROM menu");
-            while (rs.next()) {
-                types.add(rs.getString("type"));
-            }
-        } catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return types;
-    }
-    public static ArrayList<String> itemsFromType(Statement statement, String type){
-        ArrayList<String> items = new ArrayList<>();
-        try {
-            String sql = String.format("SELECT name FROM menu WHERE type='%s'", type);
-            ResultSet rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                items.add(rs.getString("name"));
-            }
-        }catch (SQLException e){
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return items;
-        }
+
 }
