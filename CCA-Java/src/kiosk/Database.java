@@ -1,42 +1,38 @@
 package kiosk;
+
 import java.sql.*;
-public class Database{
-    String filepath;
-    Connection conn;
 
-    public Database(String filepath) {
-        this.filepath = filepath;
-        connectToDB(filepath);
+/* Adapter class to access the .db file */
+class Database {
+    String filePath;
+    Connection connection;
+
+    /* Constructor */
+    Database(String filePath) {
+        this.filePath = filePath;
+        connectToDB(filePath);
     }
 
-    public void connectToDB(String filepath){
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection(filepath);
-        }
-        catch (SQLException e){
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        this.conn = conn;
+    /* Open Connection */
+    void connectToDB(String filePath){
+        Connection connection = null;
+        try { connection = DriverManager.getConnection(filePath); }
+        catch (SQLException e){ System.out.println("Something went wrong: " + e.getMessage()); }
+
+        this.connection = connection;
     }
 
-    public Statement makeStatement() {
+    /* Close Connection */
+    void closeConnection() {
+        try { this.connection.close(); }
+        catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
+    }
+
+    Statement makeStatement() {
         Statement statement = null;
-        try {
-            statement = this.conn.createStatement();
-        }
-        catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        return statement;
-    }
+        try { statement = this.connection.createStatement(); }
+        catch (SQLException e) { System.out.println("Something went wrong: " + e.getMessage()); }
 
-    public void closeConnection() {
-        try {
-            this.conn.close();
-        }
-        catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
+        return statement;
     }
 }
