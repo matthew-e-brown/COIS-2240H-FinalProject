@@ -1,0 +1,29 @@
+type,filename,name,price
+Salad,img/Salads/SideSalad.jpg,Little Leaf Meal,3.69
+Salad,img/Salads/PremiumSouthwestSaladWithGrilledChicken.jpg,Top Notch Grilled Chicken Leaf Meal,9.69
+Burgers,img/Burgers/BigMac.jpg,The Bun Hugger Burger,8.69
+Burgers,img/Burgers/Hamburger.jpg,Flattened Meat with Bread,5.69
+Burgers,img/Burgers/Cheeseburger.jpg,Aged Post Milk Flattened Meat ,6.69
+Burgers,img/Burgers/McDouble.jpg,When One Isn't Enough,7.69
+Burgers,img/Burgers/QuarterPounder.jpg,4oz of Pure Meaty Pleasure,8.69
+Chicken and Fish,img/ChickenAndFish/FiletOFish.jpg,Fishy Fillet,7.69
+Chicken and Fish,img/ChickenAndFish/ChickenMcNuggets.jpg,Baby Chicken Nugglets,6.69
+Chicken and Fish,img/ChickenAndFish/PremiumGrilledChickenClassicSandwich.jpg,Vegan Chicken on a Bun,8.69
+Chicken and Fish,img/ChickenAndFish/ChickenMcNuggetHappyMeal.jpg,Less Baby Chicken Nugglets,4.69
+Snacks and Treats,img/SnacksAndTreats/ShamrockShake.jpg,Milky Green Madness,2.69
+Snacks and Treats,img/SnacksAndTreats/VanillaCone.jpg,Vanilla Cone,1.69
+Snacks and Treats,img/SnacksAndTreats/OreoMcFlurry.jpg,Xtreem Flurry,3.69
+Snacks and Treats,img/SnacksAndTreats/HotFudgeSundae.jpg,Hot Fudge Saturdae,3.69
+Snacks and Treats,img/SnacksAndTreats/FruitAndYogurtParfait.jpg,Layers of Fruity Not-milk,3.69
+Snacks and Treats,img/SnacksAndTreats/FrenchFries.jpg,Greasy Potato Sticks,2.69
+Snacks and Treats,img/SnacksAndTreats/BakedApplePie.jpg,Hot and Dangerous Apple Pocket,1.69
+Breakfast,img/Breakfast/EggMcMuffin.jpg,Chicken Fetus on a Bun,3.69
+Breakfast,img/Breakfast/FruitAndMapleOatmeal.jpg,Undeniably Delicious Oatmeal,2.69
+Breakfast,img/Breakfast/EggWhiteDelightMcMuffin.jpg,WeightWatcher: Chicken Fetus on a Bun,3.69
+Breakfast,img/Breakfast/SausageBiscuit.jpg,Shallow Cylindrical Meat Patty on a Biscuit,3.69
+Drinks,img/Drinks/CocaCola.jpg,Cola,1.69
+Drinks,img/Drinks/AppleJuice.jpg,Apple Juice,1.69
+Drinks,img/Drinks/OrangeJuice.jpg,OJ,1.69
+Drinks,img/Drinks/Sprite.jpg,Sprit,1.69
+Drinks,img/Drinks/OrangeCrush.jpg,Orange Rush,1.69
+Drinks,img/Drinks/Water.jpg,H20,0.69
