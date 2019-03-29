@@ -1,0 +1,16 @@
+#sideBar {
+    -fx-background-color: #ffeb84;
+    -fx-start-margin: 12;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-content-display: 15px;
+}
+
+.button {
+    -fx-background-color: #DDD;
+    -fx-label-padding: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #CCC;
+}

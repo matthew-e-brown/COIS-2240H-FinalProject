@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import kiosk.HomeController?>
+
+<AnchorPane id="sideBar" fx:id="sideBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="/css/navigation.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
+    <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
+    <prefWidth><kiosk.Main fx:constant="HALF_WIDTH" /></prefWidth>
+    <Button onAction="#toggleSideMenu" styleClass="button" text="Close" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
+    <VBox id="buttonContainer">
+        <AnchorPane.topAnchor><HomeController fx:constant="PREV_HEIGHT" /></AnchorPane.topAnchor>
+        <prefHeight><HomeController fx:constant="HEIGHT" /></prefHeight>
+    </VBox>
+</AnchorPane>
