@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- JavaFX Imports -->
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import kiosk.HomeController?>
+<?import kiosk.Main?>
 
-<AnchorPane id="sideBar" fx:id="sideBar" fx:controller="kiosk.NavigationController"
-            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            stylesheets="/css/navigation.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<!-- Package Imports -->
+
+<AnchorPane id="sideBar" fx:id="sideBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.NavigationController">
     <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><kiosk.Main fx:constant="HALF_WIDTH" /></prefWidth>
-    <Button onAction="#closeSideMenu" styleClass="button" text="Close" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0" />
-    <VBox id="buttonContainer">
+    <!-- StackPane lets me put two things on top of one-another. In this case, image and button. -->
+    <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <prefHeight><HomeController fx:constant="PREV_HEIGHT" /></prefHeight>
+        <prefWidth><HomeController fx:constant="WIDTH" /></prefWidth>
+        <ImageView id="preview-image" pickOnBounds="true" preserveRatio="true">
+           <fitHeight><HomeController fx:constant="PREV_HEIGHT" /></fitHeight>
+           <fitWidth><HomeController fx:constant="WIDTH" /></fitWidth>
+           <Image url="/img/menuPreview.png" />
+       </ImageView>
+       <Button onAction="#closeSideMenu" styleClass="bt-main, bt-small" text="Close" StackPane.alignment="TOP_RIGHT">
+         <StackPane.margin><Insets right="15.0" top="15.0" /></StackPane.margin>
+      </Button>
+    </StackPane>
+    <!-- VBox is filled dynamically in Start -->
+    <VBox id="buttonContainer" alignment="TOP_CENTER" spacing="20">
         <AnchorPane.topAnchor><HomeController fx:constant="PREV_HEIGHT" /></AnchorPane.topAnchor>
         <prefHeight><HomeController fx:constant="HEIGHT" /></prefHeight>
+        <prefWidth><HomeController fx:constant="WIDTH" /></prefWidth>
     </VBox>
 </AnchorPane>

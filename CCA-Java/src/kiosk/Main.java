@@ -3,12 +3,10 @@ package kiosk;
 /* FXML Imports */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 /* Other Imports */
 import java.util.ArrayList;
@@ -30,13 +28,20 @@ public class Main extends Application {
         splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
         homeScreen = new Scene(homeRoot, WIDTH, HEIGHT);
 
+        /* Add CSS to home-screen */
+        homeScreen.getStylesheets().addAll(
+                "/css/master.css",
+                "/css/navigation.css"
+        );
+
         /* Add SidePanel */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
         Database DB = new Database("jdbc:sqlite:src/master.db");
+        VBox buttonContainer = (VBox)sideBar.lookup("#buttonContainer");
         for (String category : Menu.generateTypes(DB)) {
             Button button = new Button(category);
-            button.getStyleClass().add("button");
-            ((VBox)sideBar.lookup("#buttonContainer")).getChildren().add(button);
+            button.getStyleClass().add("bt-main");
+            buttonContainer.getChildren().add(button);
         }
         DB.closeConnection();
 

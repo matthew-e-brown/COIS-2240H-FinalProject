@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import kiosk.Main?>
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
     <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
-   <children>
-      <Button layoutX="179.0" layoutY="372.0" mnemonicParsing="false" onAction="#openSideMenu"
-              text="Toggle Side-View" />
-   </children>
+    <Button mnemonicParsing="false" onAction="#openSideMenu" text="Toggle Side-View">
+        <layoutX><Main fx:constant="HALF_WIDTH" /></layoutX>
+        <layoutY><Main fx:constant="HALF_HEIGHT" /></layoutY>
+    </Button>
 </AnchorPane>

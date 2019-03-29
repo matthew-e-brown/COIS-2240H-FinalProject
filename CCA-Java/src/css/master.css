@@ -1,0 +1,20 @@
+.bt-main {
+    /*-fx-font-family: "Henderson Slab Basic Black";*/
+    -fx-font-family: henderson-slab-basic, serif;
+    -fx-font-weight: bold;
+    -fx-background-color: #dd9d00;
+    -fx-text-fill: white;
+    -fx-label-padding: 5px;
+    -fx-font-size: 15pt;
+    -fx-pref-width: 225px;
+}
+
+.bt-main:hover {
+    -fx-background-color: #dba72c;
+}
+
+.bt-small {
+    -fx-pref-width: 90px;
+    -fx-font-size: 8pt;
+    -fx-label-padding: 2px
+}
