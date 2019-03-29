@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.AnchorPane?>
-<?import kiosk.Main?>
-
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
-    <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
-    <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
-</AnchorPane>
