@@ -1,10 +1,8 @@
 package kiosk;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.event.ActionEvent;
 import javafx.scene.layout.*;
+import javafx.fxml.FXML;
 
 public class HomeController {
     /* Dimensions for VBox */
@@ -13,13 +11,10 @@ public class HomeController {
     public static final int HEIGHT = Main.HEIGHT - PREV_HEIGHT; //Height of the VBox
 
     @FXML AnchorPane root;
-    private boolean navOpen = false;
-    public static AnchorPane sideBar;
+    static AnchorPane sideBar;
 
     @FXML
-    public void toggleSideMenu() {
-        if (!navOpen) root.getChildren().add(sideBar);
-        else root.getChildren().remove(sideBar);
-        navOpen = !navOpen;
+    public void openSideMenu() {
+        root.getChildren().add(sideBar);
     }
 }

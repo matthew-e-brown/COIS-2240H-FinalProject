@@ -8,7 +8,7 @@
     <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
    <children>
-      <Button layoutX="179.0" layoutY="372.0" mnemonicParsing="false" onAction="#toggleSideMenu"
+      <Button layoutX="179.0" layoutY="372.0" mnemonicParsing="false" onAction="#openSideMenu"
               text="Toggle Side-View" />
    </children>
 </AnchorPane>
