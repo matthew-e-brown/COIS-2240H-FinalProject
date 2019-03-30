@@ -26,8 +26,8 @@
            <fitWidth><HomeController fx:constant="WIDTH" /></fitWidth>
            <Image url="/img/menuPreview.png" />
        </ImageView>
-       <Button onAction="#closeSideMenu" styleClass="bt-main, bt-small" text="Close" StackPane.alignment="TOP_RIGHT">
-         <StackPane.margin><Insets right="15.0" top="15.0" /></StackPane.margin>
+       <Button id="hamburger-close" onAction="#closeSideMenu" styleClass="bt-main" StackPane.alignment="TOP_RIGHT">
+         <StackPane.margin><Insets left="15.0" top="15.0" right="15.0" bottom="15.0" /></StackPane.margin>
       </Button>
     </StackPane>
     <!-- VBox is filled dynamically in Start -->

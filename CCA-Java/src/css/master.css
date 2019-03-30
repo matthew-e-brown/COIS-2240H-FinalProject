@@ -1,8 +1,8 @@
 .bt-main {
-    /*-fx-font-family: "Henderson Slab Basic Black";*/
     -fx-font-family: henderson-slab-basic, serif;
     -fx-font-weight: bold;
-    -fx-background-color: #dd9d00;
+    -fx-background-color: linear-gradient(to top, #e09d00, #ffe14d);
+    -fx-effect: dropshadow(gaussian, #00000077, 10, 0, 0, 5);
     -fx-text-fill: white;
     -fx-label-padding: 5px;
     -fx-font-size: 15pt;
@@ -10,11 +10,31 @@
 }
 
 .bt-main:hover {
-    -fx-background-color: #dba72c;
+    -fx-background-color: linear-gradient(to top, #e09d00, #ffeb84);
+    -fx-effect: dropshadow(gaussian, #00000077, 15, 0, 0, 5);
 }
 
-.bt-small {
-    -fx-pref-width: 90px;
-    -fx-font-size: 8pt;
-    -fx-label-padding: 2px
+.bt-main:armed {
+    -fx-background-color: linear-gradient(to top, #e09d00, #ffeb84), #EEEEEE77;
+}
+
+/* Button for Nav-Menu */
+#hamburger {
+    -fx-background-image: url('/img/hamburgericon.png');
+    -fx-background-size: 40 40;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-pref-width: 56px;
+    -fx-pref-height: 56px;
+}
+
+#hamburger-close {
+    -fx-background-image: url('/img/cross.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 20 20;
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-width: 36px;
+    -fx-pref-height: 36px;
 }
