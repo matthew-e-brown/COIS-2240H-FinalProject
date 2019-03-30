@@ -1,19 +1,59 @@
 package kiosk;
-import java.sql.*;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 class Order {
-    static void addToOrder(Database DB, String name, float price) {
-        try {
-            String sqlCommand;
+    private ArrayList<String> names;
+    private ObservableList<Item> items;
 
-            Statement statement = DB.makeStatement();
+    public Order() {
+        this.names = new ArrayList<String>();
+        this.items = FXCollections.observableArrayList();
+    }
 
-            sqlCommand = "CREATE TABLE IF NOT EXISTS orders (name TEXT, price REAL, quantity INTEGER, PRIMARY KEY (name))";
-            statement.execute(sqlCommand);
+    public ObservableList<Item> getItems() {
+        return this.items;
+    }
 
-            sqlCommand = "INSERT OR REPLACE INTO orders VALUES ('%s', %f, COALESCE((SELECT quantity FROM orders WHERE name='%s' AND price=%f), 0) + 1)";
-            statement.executeUpdate(String.format(sqlCommand, name, price, name, price));
+    public void addToOrder(String name, float price) {
+        // If the item is already in the order, just increase the quantity; otherwise, add it to order
+        if (this.names.contains(name)) {
+            int index = getNameIndex(name);
+            int newQuantity = items.get(index).getQuantity() + 1;
+            items.get(index).setQuantity(newQuantity);
+        } else {
+            this.names.add(name);
+            this.items.add(new Item(name, price, 1));
+        }
+    }
 
-        } catch (SQLException e) { e.printStackTrace(); }
+    public void removeFromOrder(String name) {
+        int index = getNameIndex(name);
+        this.names.remove(index);
+        this.items.remove(index);
+    }
+
+    public void resetOrder() {
+        this.names = new ArrayList<String>();
+        this.items = FXCollections.observableArrayList();
+    }
+
+    public float calculateSubtotal() {
+        float total = 0;
+        for (int i = 0; i < this.items.size(); i++) {
+            total += this.items.get(i).getPrice() * this.items.get(i).getQuantity();
+        }
+        return total;
+    }
+
+    private int getNameIndex(String name) {
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).getName().equals(name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
