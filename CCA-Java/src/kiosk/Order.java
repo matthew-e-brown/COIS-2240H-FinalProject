@@ -1,19 +1,41 @@
 package kiosk;
-import java.sql.*;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 class Order {
-    static void addToOrder(Database DB, String name, float price) {
-        try {
-            String sqlCommand;
+    private ObservableList<Item> items;
+    public ObservableList<Item> getItems() { return this.items; }
 
-            Statement statement = DB.makeStatement();
+    Order() {
+        this.items = FXCollections.observableArrayList();
+    }
 
-            sqlCommand = "CREATE TABLE IF NOT EXISTS orders (name TEXT, price REAL, quantity INTEGER, PRIMARY KEY (name))";
-            statement.execute(sqlCommand);
+    void resetOrder() {
+        this.items = FXCollections.observableArrayList();
+    }
 
-            sqlCommand = "INSERT OR REPLACE INTO orders VALUES ('%s', %f, COALESCE((SELECT quantity FROM orders WHERE name='%s' AND price=%f), 0) + 1)";
-            statement.executeUpdate(String.format(sqlCommand, name, price, name, price));
+    void addToOrder(String name, float price) {
+        for (Item item : this.items) {
+            if (item.getName().equals(name)) {
+                item.incrementQuantity(1);
+                return; //leave the function, you're finished
+            }
+        }
+        this.items.add(new Item(name, price));
+    }
 
-        } catch (SQLException e) { e.printStackTrace(); }
+    void removeFromOrder(String name) {
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).getName().equals(name)) {
+                this.items.remove(i);
+            }
+        }
+    }
+
+    float calculateSubtotal() {
+        float total = 0;
+        for (Item item : this.items) { total += item.getPrice() * item.getQuantity(); }
+        return total;
     }
 }

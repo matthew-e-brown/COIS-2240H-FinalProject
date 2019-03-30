@@ -55,9 +55,15 @@ public class Main extends Application {
     public static void main(String[] args) {
         /* ↓↓ Testing the DB Functions ↓↓ */
         Database DB = new Database("jdbc:sqlite:src\\master.db");
+        Order order = new Order();
 
         ArrayList<String> types = Menu.generateTypes(DB);
-        Order.addToOrder(DB, "greasySticks", 3.69F);
+        order.addToOrder("greasySticks", 3.69F);
+        order.addToOrder("vanilla cone", 2.0F);
+        order.addToOrder("greasySticks", 3.69F);
+        System.out.println(order.calculateSubtotal());
+        order.removeFromOrder("greasySticks");
+        order.resetOrder();
 
         DB.closeConnection();
 
