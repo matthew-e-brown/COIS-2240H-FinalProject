@@ -1,36 +1,33 @@
 package kiosk;
 
-public class Item {
+class Item {
     private String name;
     private float price;
     private int quantity;
 
-    public Item() {
-        this.name = "";
-        this.price = 0;
-        this.quantity = 0;
-    }
-
-    public Item(String name, float price, int quantity) {
+    /* Constructor with Quantity */
+    Item(String name, float price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getName() {
-        return this.name;
+    /* Constructor without Quantity */
+    Item(String name, float price) {
+        this.name = name;
+        this.price = price;
+        this.quantity = 1;
     }
 
-    public float getPrice() {
-        return this.price;
-    }
+    String getName() { return this.name; }
 
-    public int getQuantity() {
-        return this.quantity;
-    }
+    float getPrice() { return this.price; }
 
-    // Need to be able to change quantity of items
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+    int getQuantity() { return this.quantity; }
+
+    void incrementQuantity(int amount) { this.quantity += amount; }
+
+    void decrementQuantity(int amount) { this.quantity -= amount; }
+
+    void setQuantity(int quantity) { this.quantity = quantity; }
 }
