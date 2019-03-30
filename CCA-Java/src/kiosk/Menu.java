@@ -17,18 +17,41 @@ class Menu {
         return types;
     }
 
-    static ArrayList<ArrayList<String>> rowsByType(Database DB, String type){
-        ArrayList<ArrayList<String>> rows = new ArrayList<>(3);
+    /* Gets a list of 'items' (Vanilla Cone etc.) from the Menu table in the database, by the type (Snacks and Treats etc.) */
+    static ArrayList<String> getItemsByType(Database DB, String type) {
+        ArrayList<String> items = new ArrayList<>();
         try {
             Statement statement = DB.makeStatement();
-            ResultSet rs = statement.executeQuery(String.format("SELECT * FROM menu WHERE type='%s'", type));
+            ResultSet rs = statement.executeQuery(String.format("SELECT name FROM menu WHERE type = '%s'", type));
             while (rs.next()) {
-                rows.get(0).add(rs.getString("filename"));
-                rows.get(1).add(rs.getString("name"));
-                rows.get(2).add(((Float)rs.getFloat("price")).toString());
+                items.add(rs.getString("name"));
             }
+            statement.close();
         } catch (SQLException e) { e.printStackTrace(); }
-        return rows;
+        return items;
     }
 
+    /* Gets the filepath of the image from the Menu Table in the database, for the food item named 'name' */
+    static String getFilepath(Database DB, String name) {
+        String filepath = null;
+        try {
+            Statement statement = DB.makeStatement();
+            ResultSet rs = statement.executeQuery(String.format("SELECT filepath FROM menu WHERE name = '%s'", name));
+            filepath = rs.getString("filepath");
+            statement.close();
+        } catch (SQLException e) { e.printStackTrace(); }
+        return filepath;
+    }
+
+    /* Gets the price from the Menu Table in the database, for the food item named 'name' */
+    static float getPrice(Database DB, String name) {
+        float price = 0;
+        try {
+            Statement statement = DB.makeStatement();
+            ResultSet rs = statement.executeQuery(String.format("SELECT price FROM menu WHERE name = '%s'", name));
+            price = rs.getFloat("price");
+            statement.close();
+        } catch (SQLException e) { e.printStackTrace(); }
+        return price;
+    }
 }
