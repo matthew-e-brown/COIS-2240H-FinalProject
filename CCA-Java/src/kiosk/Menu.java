@@ -36,8 +36,9 @@ class Menu {
         String filepath = null;
         try {
             Statement statement = Main.DB.makeStatement();
-            ResultSet rs = statement.executeQuery(String.format("SELECT filepath FROM menu WHERE name = '%s'", name));
-            filepath = rs.getString("filepath");
+            String sql = "SELECT filename FROM menu WHERE name = '%s'";
+            ResultSet rs = statement.executeQuery(String.format(sql, name.replaceAll("'", "''")));
+            filepath = rs.getString("filename");
             statement.close();
         } catch (SQLException e) { e.printStackTrace(); }
         return filepath;

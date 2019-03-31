@@ -22,7 +22,9 @@
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
         </Button>
     </StackPane>
-    <GridPane fx:id="typesGrid" hgap="15" vgap="15">
+    <GridPane fx:id="typesGrid">
+        <hgap><HomeController fx:constant="GRID_GAP" /></hgap>
+        <vgap><HomeController fx:constant="GRID_GAP" /></vgap>
         <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
