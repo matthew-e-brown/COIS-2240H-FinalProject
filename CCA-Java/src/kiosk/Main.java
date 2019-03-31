@@ -1,21 +1,17 @@
 package kiosk;
 
-/* FXML Imports */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
-/* Other Imports */
-import java.util.ArrayList;
-
 public class Main extends Application {
     /* Fields */
+    static Database DB = new Database("jdbc:sqlite:src/master.db");
+
+    /* Constants */
     private static Scene splashScreen, homeScreen;
     public static final int WIDTH = 600, HEIGHT = 800;
     public static final int HALF_WIDTH = 300, THIRD_WIDTH = 200;
@@ -26,48 +22,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        /* Add SidePanel */
+        /* Add to Controller, then initialize it */
+        /* Add SidePanel to everything */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
-        Database DB = new Database("jdbc:sqlite:src/master.db");
         VBox buttonContainer = (VBox)sideBar.lookup("#buttonContainer");
-        for (String category : Menu.generateTypes(DB)) {
+        for (String category : Menu.generateTypes()) {
             Button button = new Button(category);
             button.getStyleClass().add("bt-main");
             buttonContainer.getChildren().add(button);
         }
-
-        TableView<Item> table;
-        Order order = new Order();
-        order.addToOrder("greasySticks", 3.69F);
-        order.addToOrder("vanilla cone", 2.0F);
-        order.addToOrder("greasySticks", 3.69F);
-
-        //Name column
-        TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(200);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
-
-        //Price column
-        TableColumn<Item, Float> priceColumn = new TableColumn<>("Price");
-        priceColumn.setMinWidth(100);
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
-
-        //Quantity column
-        TableColumn<Item, Integer> quantityColumn = new TableColumn<>("Quantity");
-        quantityColumn.setMinWidth(100);
-        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
-
-        table = new TableView<>();
-        table.setItems(order.getItems());
-        table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
-
-        VBox vBox = new VBox();
-        vBox.getChildren().addAll(table);
-        HomeController.dick = vBox;
-
-        DB.closeConnection();
-
         HomeController.sideBar = sideBar;
+        OrderController.sideBar = sideBar;
 
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
@@ -80,28 +45,11 @@ public class Main extends Application {
                 "/css/navigation.css"
         );
 
-
         primaryStage.setTitle("Ordering Kiosk");
         primaryStage.setScene(splashScreen);
+        primaryStage.setOnCloseRequest(event -> DB.closeConnection());
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        /* ↓↓ Testing the DB Functions ↓↓ */
-        Database DB = new Database("jdbc:sqlite:src\\master.db");
-        Order order = new Order();
-
-        ArrayList<String> types = Menu.generateTypes(DB);
-        order.addToOrder("greasySticks", 3.69F);
-        order.addToOrder("vanilla cone", 2.0F);
-        order.addToOrder("greasySticks", 3.69F);
-        System.out.println(order.calculateSubtotal());
-        order.removeFromOrder("greasySticks");
-        order.resetOrder();
-
-        DB.closeConnection();
-
-        /* Open Window */
-        launch(args);
-    }
+    public static void main(String[] args) { launch(args); }
 }

@@ -5,10 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
 <?import kiosk.HomeController?>
-<?import java.net.URL?>
 <?import kiosk.Main?>
 
-<?import javafx.scene.layout.Pane?>
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
     <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
@@ -24,7 +22,7 @@
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
         </Button>
     </StackPane>
-    <GridPane hgap="15" vgap="15">
+    <GridPane fx:id="typesGrid" hgap="15" vgap="15">
         <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
@@ -38,11 +36,5 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
         </rowConstraints>
-        <Pane />
-        <Pane GridPane.columnIndex="1" />
-        <Pane GridPane.rowIndex="1" />
-        <Pane GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <Pane GridPane.rowIndex="2"/>
-        <Pane GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     </GridPane>
 </AnchorPane>

@@ -18,6 +18,11 @@
     -fx-background-color: linear-gradient(to top, #e09d00, #ffeb84), #EEEEEE77;
 }
 
+Pane {
+    -fx-background-color: #642344;
+    -fx-border-color: magenta;
+}
+
 /* Button for Nav-Menu */
 #hamburger {
     -fx-background-image: url('/img/hamburgericon.png');
