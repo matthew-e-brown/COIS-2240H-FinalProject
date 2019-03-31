@@ -16,7 +16,7 @@ public class Main extends Application {
     private static Scene splashScreen, homeScreen;
     public static final int WIDTH = 600, HEIGHT = 800;
     public static final int HALF_WIDTH = 300, THIRD_WIDTH = 200;
-    public static final int HALF_HEIGHT = 400, QUART_HEIGHT = 200;
+    public static final int HALF_HEIGHT = 400, QUARTER_HEIGHT = 200;
 
     /* Getters */
     static Scene getHomeScreen() { return homeScreen; }

@@ -1,12 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import kiosk.HomeController?>
+<?import java.net.URL?>
 <?import kiosk.Main?>
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
-    <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
-    <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
-    <Button id="hamburger" mnemonicParsing="false" onAction="#openSideMenu" styleClass="bt-main"
-            AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="18.0" />
+    <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
+    <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
+    <StackPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
+        <prefHeight><HomeController fx:constant="BANNER_HEIGHT" /></prefHeight>
+        <ImageView>
+            <fitWidth><Main fx:constant="WIDTH" /></fitWidth>
+            <fitHeight><HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
+            <Image url="/img/splashScreen.png" />
+        </ImageView>
+        <Button id="hamburger" mnemonicParsing="false" onAction="#openSideMenu" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
+        </Button>
+    </StackPane>
+    <GridPane hgap="15" vgap="15">
+        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
+        <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
+        <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+        <prefHeight><HomeController fx:constant="OBJECT_HEIGHT" /></prefHeight>
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+        </rowConstraints>
+        <Pane />
+        <Pane GridPane.columnIndex="1" />
+        <Pane GridPane.rowIndex="1" />
+        <Pane GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <Pane GridPane.rowIndex="2"/>
+        <Pane GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    </GridPane>
 </AnchorPane>

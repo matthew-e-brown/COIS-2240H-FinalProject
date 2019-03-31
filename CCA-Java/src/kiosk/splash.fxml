@@ -6,8 +6,8 @@
 <?import kiosk.Main?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.SplashController">
-    <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
-    <prefWidth><kiosk.Main fx:constant="WIDTH" /></prefWidth>
+    <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
+    <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
     <ImageView fx:id="imgSplashScreen"
                onKeyReleased="#triggerSplash" onMouseReleased="#triggerSplash" onTouchReleased="#triggerSplash"
                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

@@ -9,21 +9,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import kiosk.HomeController?>
+<?import kiosk.NavigationController?>
 <?import kiosk.Main?>
 
 <!-- Package Imports -->
 
 <AnchorPane id="sideBar" fx:id="sideBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.NavigationController">
-    <prefHeight><kiosk.Main fx:constant="HEIGHT" /></prefHeight>
-    <prefWidth><kiosk.Main fx:constant="HALF_WIDTH" /></prefWidth>
+    <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
+    <prefWidth><Main fx:constant="HALF_WIDTH" /></prefWidth>
     <!-- StackPane lets me put two things on top of one-another. In this case, image and button. -->
     <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <prefHeight><HomeController fx:constant="PREV_HEIGHT" /></prefHeight>
-        <prefWidth><HomeController fx:constant="WIDTH" /></prefWidth>
+        <prefHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></prefHeight>
+        <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
         <ImageView id="preview-image" pickOnBounds="true" preserveRatio="true">
-           <fitHeight><HomeController fx:constant="PREV_HEIGHT" /></fitHeight>
-           <fitWidth><HomeController fx:constant="WIDTH" /></fitWidth>
+           <fitHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></fitHeight>
+           <fitWidth><NavigationController fx:constant="WIDTH" /></fitWidth>
            <Image url="/img/menuPreview.png" />
        </ImageView>
        <Button id="hamburger-close" onAction="#closeSideMenu" styleClass="bt-main" StackPane.alignment="TOP_RIGHT">
@@ -32,8 +32,8 @@
     </StackPane>
     <!-- VBox is filled dynamically in Start -->
     <VBox id="buttonContainer" alignment="TOP_CENTER" spacing="20">
-        <AnchorPane.topAnchor><HomeController fx:constant="PREV_HEIGHT" /></AnchorPane.topAnchor>
-        <prefHeight><HomeController fx:constant="HEIGHT" /></prefHeight>
-        <prefWidth><HomeController fx:constant="WIDTH" /></prefWidth>
+        <AnchorPane.topAnchor><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></AnchorPane.topAnchor>
+        <prefHeight><NavigationController fx:constant="HEIGHT" /></prefHeight>
+        <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
     </VBox>
 </AnchorPane>
