@@ -4,6 +4,9 @@ package kiosk;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -23,6 +26,49 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        /* Add SidePanel */
+        AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
+        Database DB = new Database("jdbc:sqlite:src/master.db");
+        VBox buttonContainer = (VBox)sideBar.lookup("#buttonContainer");
+        for (String category : Menu.generateTypes(DB)) {
+            Button button = new Button(category);
+            button.getStyleClass().add("bt-main");
+            buttonContainer.getChildren().add(button);
+        }
+
+        TableView<Item> table;
+        Order order = new Order();
+        order.addToOrder("greasySticks", 3.69F);
+        order.addToOrder("vanilla cone", 2.0F);
+        order.addToOrder("greasySticks", 3.69F);
+
+        //Name column
+        TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(200);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("Name"));
+
+        //Price column
+        TableColumn<Item, Float> priceColumn = new TableColumn<>("Price");
+        priceColumn.setMinWidth(100);
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("Price"));
+
+        //Quantity column
+        TableColumn<Item, Integer> quantityColumn = new TableColumn<>("Quantity");
+        quantityColumn.setMinWidth(100);
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
+
+        table = new TableView<>();
+        table.setItems(order.getItems());
+        table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
+
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table);
+        HomeController.dick = vBox;
+
+        DB.closeConnection();
+
+        HomeController.sideBar = sideBar;
+
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
         splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
@@ -34,18 +80,6 @@ public class Main extends Application {
                 "/css/navigation.css"
         );
 
-        /* Add SidePanel */
-        AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
-        Database DB = new Database("jdbc:sqlite:src/master.db");
-        VBox buttonContainer = (VBox)sideBar.lookup("#buttonContainer");
-        for (String category : Menu.generateTypes(DB)) {
-            Button button = new Button(category);
-            button.getStyleClass().add("bt-main");
-            buttonContainer.getChildren().add(button);
-        }
-        DB.closeConnection();
-
-        HomeController.sideBar = sideBar;
 
         primaryStage.setTitle("Ordering Kiosk");
         primaryStage.setScene(splashScreen);
