@@ -1,14 +1,13 @@
 package kiosk;
 
 import java.net.URL;
-
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import java.util.Random;
-import javafx.scene.layout.*;
-import javafx.fxml.FXML;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.*;
+import javafx.fxml.FXML;
 
 public class HomeController implements Initializable {
     public static final int BANNER_HEIGHT = Main.QUARTER_HEIGHT;
@@ -27,8 +26,8 @@ public class HomeController implements Initializable {
         Random r = new Random();
         int i = 0;
         int j = 0;
-        for (String type : types) {
-            try {
+        try {
+            for (String type : types) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("homeItem.fxml"));
                 StackPane item = loader.load();
                 // To get access to setter Methods
@@ -44,8 +43,7 @@ public class HomeController implements Initializable {
                 i = ++i % 2;
                 j = ++j % 3;
             }
-            catch (Exception e) { e.printStackTrace(); }
-        }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     @FXML

@@ -1,6 +1,6 @@
 package kiosk;
-import java.sql.*;
 import java.util.ArrayList;
+import java.sql.*;
 
 class Menu {
     /* Gets a list of 'types' (Breakfast, Burgers, etc.) from the Menu Table in the database */

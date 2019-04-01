@@ -4,17 +4,10 @@ import java.sql.*;
 
 /* Adapter class to access the .db file */
 class Database {
-    String filePath;
-    Connection connection;
+    private Connection connection;
 
     /* Constructor */
     Database(String filePath) {
-        this.filePath = filePath;
-        connectToDB(filePath);
-    }
-
-    /* Open Connection */
-    void connectToDB(String filePath){
         Connection connection = null;
         try { connection = DriverManager.getConnection(filePath); }
         catch (SQLException e) { e.printStackTrace(); }

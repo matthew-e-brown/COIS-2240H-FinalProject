@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 class Order {
     private ObservableList<Item> items;
-    public ObservableList<Item> getItems() { return this.items; }
+    ObservableList<Item> getItems() { return this.items; }
 
     Order() {
         this.items = FXCollections.observableArrayList();
