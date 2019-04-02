@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
 public class Main extends Application {
     /* Fields */
@@ -22,28 +21,25 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        /* Add to Controller, then initialize it */
         /* Add SidePanel to everything */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
-        VBox buttonContainer = (VBox)sideBar.lookup("#buttonContainer");
-        for (String category : Menu.generateTypes()) {
-            Button button = new Button(category);
-            button.getStyleClass().add("bt-main");
-            buttonContainer.getChildren().add(button);
-        }
         HomeController.sideBar = sideBar;
         OrderController.sideBar = sideBar;
+        CategoryController.sideBar = sideBar;
 
+        /* Load Every Scene */
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
         splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
         homeScreen = new Scene(homeRoot, WIDTH, HEIGHT);
 
-        /* Add CSS to home-screen */
-        homeScreen.getStylesheets().addAll(
-                "/css/master.css",
-                "/css/navigation.css"
-        );
+        /* Add CSS to every screen */
+        for (Scene scene : new Scene[] {splashScreen, homeScreen}) {
+            scene.getStylesheets().addAll(
+                    "/css/master.css",
+                    "/css/navigation.css"
+            );
+        }
 
         primaryStage.setTitle("Ordering Kiosk");
         primaryStage.setScene(splashScreen);
