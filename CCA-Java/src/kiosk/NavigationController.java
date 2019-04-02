@@ -23,6 +23,8 @@ public class NavigationController implements Initializable {
         for (String category : Menu.generateTypes()) {
             Button button = new Button(category);
             button.getStyleClass().add("bt-main");
+            button.setOnAction((event -> Main.selectCategory(sideBar.getParent(), category)));
+
             buttonContainer.getChildren().add(button);
         }
     }
