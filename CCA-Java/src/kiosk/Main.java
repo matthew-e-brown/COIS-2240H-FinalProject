@@ -5,10 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import kiosk.backend.Database;
 
 public class Main extends Application {
     /* Fields */
-    static Database DB = new Database("jdbc:sqlite:src/master.db");
+    public static Database DB = new Database("jdbc:sqlite:src/master.db");
 
     /* Constants */
     private static Scene homeScreen;
@@ -48,7 +49,7 @@ public class Main extends Application {
     }
 
     /* root: the currently selected window */
-    static void selectCategory(Node root, String category) {
+    public static void selectCategory(Node root, String category) {
         try {
             //get the primaryStage
             Stage primaryStage = (Stage)root.getScene().getWindow();

@@ -1,4 +1,4 @@
-package kiosk;
+package kiosk.loadIns;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,15 +10,15 @@ public class CategoryItemController {
     public static final int IMAGE_WIDTH = (int)(HomeItemController.IMAGE_WIDTH * 0.8);
     public static final int IMAGE_HEIGHT = (int)(HomeItemController.IMAGE_HEIGHT * 0.8);
 
-    @FXML StackPane root;
-    @FXML ImageView image;
-    @FXML Button button;
+    @FXML public StackPane root;
+    @FXML public ImageView image;
+    @FXML public Button button;
 
-    String itemName;
+    public String itemName;
 
-    CategoryItemController(String itemName) { this.itemName = itemName; }
+    public CategoryItemController(String itemName) { this.itemName = itemName; }
 
-    void setImageURL(String URL) {
+    public void setImageURL(String URL) {
         Image img = new Image("file:src" + URL);
         this.image.setImage(img);
     }

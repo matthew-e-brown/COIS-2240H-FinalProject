@@ -2,6 +2,7 @@ package kiosk;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import kiosk.backend.Item;
 
 class Order {
     private ObservableList<Item> items;

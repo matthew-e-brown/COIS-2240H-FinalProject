@@ -1,13 +1,13 @@
-package kiosk;
+package kiosk.backend;
 
 import java.sql.*;
 
 /* Adapter class to access the .db file */
-class Database {
+public class Database {
     private Connection connection;
 
     /* Constructor */
-    Database(String filePath) {
+    public Database(String filePath) {
         Connection connection = null;
         try { connection = DriverManager.getConnection(filePath); }
         catch (SQLException e) { e.printStackTrace(); }
@@ -16,7 +16,7 @@ class Database {
     }
 
     /* Close Connection */
-    void closeConnection() {
+    public void closeConnection() {
         try { this.connection.close(); }
         catch (SQLException e) { e.printStackTrace(); }
     }

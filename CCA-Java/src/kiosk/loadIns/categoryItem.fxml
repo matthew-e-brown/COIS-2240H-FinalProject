@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.geometry.Insets?>
-<?import kiosk.CategoryItemController?>
+<?import kiosk.loadIns.CategoryItemController?>
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <ImageView fx:id="image">

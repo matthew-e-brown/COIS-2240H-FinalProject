@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.*;
 import javafx.fxml.FXML;
+import kiosk.backend.Menu;
+import kiosk.loadIns.HomeItemController;
 
 public class HomeController implements Initializable {
     public static final int BANNER_HEIGHT = Main.QUARTER_HEIGHT;
@@ -27,7 +29,7 @@ public class HomeController implements Initializable {
         try {
             for (String category : Menu.generateTypes()) {
                 HomeItemController controller = new HomeItemController(category);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("homeItem.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("loadIns/homeItem.fxml"));
                 loader.setController(controller);
                 StackPane itemPane = loader.load();
                 // To get access to setter Methods

@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import kiosk.backend.Menu;
+import kiosk.loadIns.CategoryItemController;
 
 public class CategoryController implements Initializable {
     @FXML AnchorPane root;
@@ -29,7 +31,7 @@ public class CategoryController implements Initializable {
             for (String item : Menu.getItemsByType(this.category)) {
                 // Load the category item
                 CategoryItemController controller = new CategoryItemController(item);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("categoryItem.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("loadIns/categoryItem.fxml"));
                 loader.setController(controller);
                 StackPane itemPane = loader.load();
 

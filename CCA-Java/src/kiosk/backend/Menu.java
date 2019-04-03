@@ -1,10 +1,12 @@
-package kiosk;
+package kiosk.backend;
+import kiosk.Main;
+
 import java.util.ArrayList;
 import java.sql.*;
 
-class Menu {
+public class Menu {
     /* Gets a list of 'types' (Breakfast, Burgers, etc.) from the Menu Table in the database */
-    static ArrayList<String> generateTypes(){
+    public static ArrayList<String> generateTypes() {
         ArrayList<String> types = new ArrayList<>();
         try {
             Statement statement = Main.DB.makeStatement();
@@ -18,7 +20,7 @@ class Menu {
     }
 
     /* Gets a list of 'items' (Vanilla Cone etc.) from the Menu table in the database, by the type (Snacks and Treats etc.) */
-    static ArrayList<String> getItemsByType(String type) {
+    public static ArrayList<String> getItemsByType(String type) {
         ArrayList<String> items = new ArrayList<>();
         try {
             Statement statement = Main.DB.makeStatement();
@@ -32,7 +34,7 @@ class Menu {
     }
 
     /* Gets the filepath of the image from the Menu Table in the database, for the food item named 'name' */
-    static String getFilepath(String name) {
+    public static String getFilepath(String name) {
         String filepath = null;
         try {
             Statement statement = Main.DB.makeStatement();
@@ -45,7 +47,7 @@ class Menu {
     }
 
     /* Gets the price from the Menu Table in the database, for the food item named 'name' */
-    static float getPrice(String name) {
+    public static float getPrice(String name) {
         float price = 0;
         try {
             Statement statement = Main.DB.makeStatement();

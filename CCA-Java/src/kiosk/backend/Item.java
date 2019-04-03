@@ -1,4 +1,4 @@
-package kiosk;
+package kiosk.backend;
 
 public class Item {
     private String name;
