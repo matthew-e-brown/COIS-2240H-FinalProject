@@ -18,9 +18,9 @@
     -fx-background-color: linear-gradient(to top, #e09d00, #ffeb84), #EEEEEE77;
 }
 
-Pane {
-    -fx-background-color: #642344;
-    -fx-border-color: magenta;
+.bt-small {
+    -fx-font-weight: normal;
+    -fx-font-size: 10pt;
 }
 
 /* Button for Nav-Menu */

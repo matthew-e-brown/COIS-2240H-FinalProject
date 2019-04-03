@@ -6,7 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import kiosk.HomeItemController?>
 
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeItemController">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fx:id="image">
         <fitWidth><HomeItemController fx:constant="IMAGE_WIDTH" /></fitWidth>
         <fitHeight><HomeItemController fx:constant="IMAGE_HEIGHT" /></fitHeight>

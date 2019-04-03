@@ -22,26 +22,28 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ArrayList<String> types = Menu.generateTypes();
         Random r = new Random();
-        int i = 0;
-        int j = 0;
+        int i = 0, j = 0;
         try {
-            for (String type : types) {
+            for (String category : Menu.generateTypes()) {
+                HomeItemController controller = new HomeItemController(category);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("homeItem.fxml"));
-                StackPane item = loader.load();
+                loader.setController(controller);
+                StackPane itemPane = loader.load();
                 // To get access to setter Methods
-                HomeItemController controller = loader.getController();
-                controller.button.setText(type);
+                controller.button.setText(category);
+                controller.button.setOnAction((event) -> controller.changeScene());
 
                 //Put a random image URL in there
-                ArrayList<String> items = Menu.getItemsByType(type);
+                ArrayList<String> items = Menu.getItemsByType(category);
                 String path = Menu.getFilepath(items.get(r.nextInt(items.size())));
                 controller.setImageURL(path);
 
-                typesGrid.add(item, i, j);
-                i = ++i % 2;
-                j = ++j % 3;
+                typesGrid.add(itemPane, i, j); //Will automatically make new rows
+                if (++i > 1) {
+                    i = 0;
+                    j++;
+                }
             }
         } catch (Exception e) { e.printStackTrace(); }
     }
