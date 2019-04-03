@@ -7,8 +7,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
 public class CategoryItemController {
-    public static final int IMAGE_WIDTH = HomeItemController.IMAGE_WIDTH;
-    public static final int IMAGE_HEIGHT = HomeItemController.IMAGE_HEIGHT;
+    public static final int IMAGE_WIDTH = (int)(HomeItemController.IMAGE_WIDTH * 0.8);
+    public static final int IMAGE_HEIGHT = (int)(HomeItemController.IMAGE_HEIGHT * 0.8);
 
     @FXML StackPane root;
     @FXML ImageView image;

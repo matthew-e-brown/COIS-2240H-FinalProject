@@ -11,7 +11,7 @@
         <fitWidth><CategoryItemController fx:constant="IMAGE_WIDTH" /></fitWidth>
         <fitHeight><CategoryItemController fx:constant="IMAGE_HEIGHT" /></fitHeight>
     </ImageView>
-    <Button StackPane.alignment="BOTTOM_CENTER" fx:id="button" styleClass="bt-main">
+    <Button StackPane.alignment="BOTTOM_CENTER" fx:id="button" styleClass="bt-main, bt-small">
         <StackPane.margin><Insets left="15.0" top="15.0" right="15.0" bottom="15.0" /></StackPane.margin>
     </Button>
 </StackPane>

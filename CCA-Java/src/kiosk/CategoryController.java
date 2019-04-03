@@ -6,9 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 
 public class CategoryController implements Initializable {
     @FXML AnchorPane root;
@@ -22,7 +20,9 @@ public class CategoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(hamburger);
+        typesGrid.setVgap(15);
+        typesGrid.setHgap(15);
+
         try {
             if (this.category == null) throw new Exception("Type must be set before initialize is run");
             int i = 0, j = 0;
