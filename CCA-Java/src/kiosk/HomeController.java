@@ -1,15 +1,18 @@
 package kiosk;
 
-import java.net.URL;
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import kiosk.backend.Menu;
 import kiosk.loadIns.HomeItemController;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     public static final int BANNER_HEIGHT = Main.QUARTER_HEIGHT;

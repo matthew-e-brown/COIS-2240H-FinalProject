@@ -1,14 +1,17 @@
 package kiosk;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import kiosk.backend.Menu;
 import kiosk.loadIns.CategoryItemController;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class CategoryController implements Initializable {
     @FXML AnchorPane root;

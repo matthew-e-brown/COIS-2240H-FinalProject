@@ -1,6 +1,9 @@
 package kiosk.backend;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /* Adapter class to access the .db file */
 public class Database {

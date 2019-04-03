@@ -1,8 +1,11 @@
 package kiosk.backend;
+
 import kiosk.Main;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.*;
 
 public class Menu {
     /* Gets a list of 'types' (Breakfast, Burgers, etc.) from the Menu Table in the database */
