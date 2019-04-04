@@ -56,7 +56,8 @@ public class Menu {
         try {
             Statement statement = Main.DB.makeStatement(); // attempt to create a statement using the referenced database connection
             // call database using statement that looks for the price in database menu where the name is the defined name (in the argument)
-            ResultSet rs = statement.executeQuery(String.format("SELECT price FROM menu WHERE name = '%s'", name));
+            String sql = "SELECT price FROM menu WHERE name = '%s'";
+            ResultSet rs = statement.executeQuery(String.format(sql, name.replaceAll("'", "''")));
             price = rs.getFloat("price"); // set the float price as the price row value from the results
             statement.close(); // close the statement used to retrieve the float value of the price
         } catch (SQLException e) { e.printStackTrace(); } // if anything fails, error printStackTrace

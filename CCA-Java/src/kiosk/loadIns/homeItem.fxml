@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import kiosk.loadIns.HomeItemController?>
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane styleClass="home-item" fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <ImageView fx:id="image">
         <fitWidth><HomeItemController fx:constant="IMAGE_WIDTH" /></fitWidth>
         <fitHeight><HomeItemController fx:constant="IMAGE_HEIGHT" /></fitHeight>

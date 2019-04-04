@@ -12,32 +12,45 @@ import kiosk.backend.Database;
 public class Main extends Application {
     /* Fields */
     public static Database DB = new Database("jdbc:sqlite:src/master.db");
+    public static Order order = new Order();
 
     /* Constants */
-    private static Scene homeScreen;
+    private static Scene homeScreen, splashScreen, orderScreen;
+    private static OrderController orderController = new OrderController();
     public static final int WIDTH = 600, HEIGHT = 800;
     public static final int HALF_WIDTH = 300;
     static final int QUARTER_HEIGHT = 200;
 
     /* Getters */
     static Scene getHomeScreen() { return homeScreen; }
+    static Scene getSplashScreen() { return splashScreen; }
+    static Scene getOrderScreen() { return orderScreen; }
+    static OrderController getOrderController() { return orderController; }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         /* Add SidePanel to everything */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
         HomeController.sideBar = sideBar;
-        OrderController.sideBar = sideBar;
         CategoryController.sideBar = sideBar;
+        OrderController.sideBar = sideBar;
 
         /* Load Every Scene */
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-        Scene splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
+
+        /* Order is special because I need to use the controller's method outside of initialize */
+        FXMLLoader orderLoader = new FXMLLoader(Main.class.getResource("order.fxml"));
+        orderLoader.setController(orderController);
+        Parent orderRoot = orderLoader.load();
+
+        splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
         homeScreen = new Scene(homeRoot, WIDTH, HEIGHT);
+        orderScreen = new Scene(orderRoot, WIDTH, HEIGHT);
 
         /* Add CSS to every screen */
-        for (Scene scene : new Scene[] {splashScreen, homeScreen}) {
+        for (Scene scene : new Scene[] { splashScreen, homeScreen, orderScreen }) {
             scene.getStylesheets().addAll(
                     "/css/master.css",
                     "/css/navigation.css"

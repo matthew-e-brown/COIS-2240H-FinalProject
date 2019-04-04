@@ -6,6 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import kiosk.*?>
+<?import javafx.scene.control.ScrollPane?>
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.HomeController">
     <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
@@ -21,19 +22,22 @@
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
         </Button>
     </StackPane>
-    <GridPane fx:id="typesGrid">
-        <hgap><HomeController fx:constant="GRID_GAP" /></hgap>
-        <vgap><HomeController fx:constant="GRID_GAP" /></vgap>
-        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
+    <ScrollPane fitToWidth="true" pannable="true">
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
         <prefHeight><HomeController fx:constant="OBJECT_HEIGHT" /></prefHeight>
-        <columnConstraints>
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-        </rowConstraints>
-    </GridPane>
+        <GridPane fx:id="typesGrid">
+            <padding><Insets top="20.0" /></padding>
+            <hgap><HomeController fx:constant="GRID_GAP" /></hgap>
+            <vgap><HomeController fx:constant="GRID_GAP" /></vgap>
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+            </rowConstraints>
+        </GridPane>
+    </ScrollPane>
 </AnchorPane>
