@@ -6,17 +6,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import kiosk.backend.Menu;
 import kiosk.loadIns.CategoryItemController;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static kiosk.Main.order;
+
 public class CategoryController implements Initializable {
+    public static final int SCROLLER_TOP_POS = HomeController.OBJECT_TOP_POS - HomeController.GRID_GAP;
+    public static final int SCROLLER_SIDE_OFFSET = (int)(HomeController.OBJECT_SIDE_OFFSET * 0.85);
+
     @FXML AnchorPane root;
     @FXML Button hamburger;
     @FXML GridPane typesGrid;
+    @FXML Pane numberPane;
+    @FXML Text orderNumber;
 
     private String category;
     static AnchorPane sideBar;
@@ -33,7 +43,7 @@ public class CategoryController implements Initializable {
             int i = 0, j = 0;
             for (String item : Menu.getItemsByType(this.category)) {
                 // Load the category item
-                CategoryItemController controller = new CategoryItemController(item);
+                CategoryItemController controller = new CategoryItemController(item, this);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("loadIns/categoryItem.fxml"));
                 loader.setController(controller);
                 StackPane itemPane = loader.load();
@@ -53,9 +63,23 @@ public class CategoryController implements Initializable {
             }
         } catch (Exception e) { e.printStackTrace(); }
         hamburger.setOnAction((event) -> openSideMenu());
+        //Make a circle for the number;
+        double width = numberPane.getPrefWidth();
+        numberPane.setPrefHeight(width);
+        numberPane.setClip(new Circle(width / 2, width / 2, width / 2));
     }
 
     private void openSideMenu() {
         root.getChildren().add(sideBar);
+    }
+
+    public void incrementOrderIcon() {
+        if (!numberPane.isVisible()) numberPane.setVisible(true); //Show it if it doesn't exist
+        int n = Integer.parseInt(this.orderNumber.getText());
+        orderNumber.setText(String.valueOf(++n));
+    }
+
+    public void setOrderIcon(int amount) {
+        orderNumber.setText(String.valueOf(amount));
     }
 }

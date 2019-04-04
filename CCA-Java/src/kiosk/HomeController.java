@@ -37,7 +37,7 @@ public class HomeController implements Initializable {
                 StackPane itemPane = loader.load();
                 // To get access to setter Methods
                 controller.button.setText(category);
-                controller.button.setOnAction((event) -> controller.changeScene());
+                controller.button.setOnAction((event) -> controller.selectCategory());
 
                 //Put a random image URL in there
                 ArrayList<String> items = Menu.getItemsByType(category);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- No Controller, set manually as it has to have arguments passed to constructor  -->
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import kiosk.*?>
+<?import javafx.scene.text.Text?>
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
     <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
@@ -19,16 +21,17 @@
             <fitHeight><kiosk.HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
             <Image url="/img/splashScreen.png" />
         </ImageView>
-        <Button fx:id="hamburger" id="hamburger" mnemonicParsing="false" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
+        <Button id="hamburger" fx:id="hamburger" mnemonicParsing="false" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
         </Button>
     </StackPane>
-    <ScrollPane fx:id="scroller" fitToWidth="true">
-        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
-        <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
-        <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+    <ScrollPane fx:id="scroller" fitToWidth="true" pannable="true">
+        <layoutY><CategoryController fx:constant="SCROLLER_TOP_POS" /></layoutY>
+        <AnchorPane.rightAnchor><CategoryController fx:constant="SCROLLER_SIDE_OFFSET" /></AnchorPane.rightAnchor>
+        <AnchorPane.leftAnchor><CategoryController fx:constant="SCROLLER_SIDE_OFFSET" /></AnchorPane.leftAnchor>
         <prefHeight><HomeController fx:constant="OBJECT_HEIGHT" /></prefHeight>
-        <GridPane fx:id="typesGrid" id="typesGrid" alignment="CENTER">
+        <GridPane id="typesGrid" fx:id="typesGrid" alignment="CENTER">
+            <padding><Insets top="20" /></padding>
             <hgap><HomeController fx:constant="GRID_GAP" /></hgap>
             <vgap><HomeController fx:constant="GRID_GAP" /></vgap>
             <columnConstraints>
@@ -40,4 +43,8 @@
             </rowConstraints>
         </GridPane>
     </ScrollPane>
+    <Button styleClass="bt-main" text="View Order" AnchorPane.bottomAnchor="18" AnchorPane.rightAnchor="20" />
+    <Pane fx:id="numberPane" styleClass="order-number" prefWidth="50" AnchorPane.bottomAnchor="45" visible="false" AnchorPane.rightAnchor="-5">
+        <Text fx:id="orderNumber" fill="white" layoutX="18.0" layoutY="25.0" text="0" textAlignment="CENTER" textOrigin="CENTER"/>
+    </Pane>
 </AnchorPane>

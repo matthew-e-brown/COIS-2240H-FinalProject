@@ -54,7 +54,8 @@ public class Menu {
         float price = 0;
         try {
             Statement statement = Main.DB.makeStatement();
-            ResultSet rs = statement.executeQuery(String.format("SELECT price FROM menu WHERE name = '%s'", name));
+            String sql = "SELECT price FROM menu WHERE name = '%s'";
+            ResultSet rs = statement.executeQuery(String.format(sql, name.replaceAll("'", "''")));
             price = rs.getFloat("price");
             statement.close();
         } catch (SQLException e) { e.printStackTrace(); }

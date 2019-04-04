@@ -12,6 +12,7 @@ import kiosk.backend.Database;
 public class Main extends Application {
     /* Fields */
     public static Database DB = new Database("jdbc:sqlite:src/master.db");
+    public static Order order = new Order();
 
     /* Constants */
     private static Scene homeScreen;
@@ -24,6 +25,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         /* Add SidePanel to everything */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
         HomeController.sideBar = sideBar;

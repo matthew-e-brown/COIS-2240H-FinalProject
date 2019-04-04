@@ -25,5 +25,5 @@ public class HomeItemController {
     }
 
     // Cannot be @FXML because it is referenced sans-Controller
-    public void changeScene() { Main.selectCategory(this.root, this.category); }
+    public void selectCategory() { Main.selectCategory(this.root, this.category); }
 }

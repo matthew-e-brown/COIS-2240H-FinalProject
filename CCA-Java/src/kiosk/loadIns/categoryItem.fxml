@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.StackPane?>
 <?import kiosk.loadIns.CategoryItemController?>
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<StackPane styleClass="category-item" fx:id="root" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <ImageView fx:id="image">
         <fitWidth><CategoryItemController fx:constant="IMAGE_WIDTH" /></fitWidth>
         <fitHeight><CategoryItemController fx:constant="IMAGE_HEIGHT" /></fitHeight>
