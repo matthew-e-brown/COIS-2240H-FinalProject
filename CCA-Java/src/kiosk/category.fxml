@@ -26,9 +26,9 @@
         </Button>
     </StackPane>
     <ScrollPane fx:id="scroller" fitToWidth="true" pannable="true">
-        <layoutY><CategoryController fx:constant="SCROLLER_TOP_POS" /></layoutY>
-        <AnchorPane.rightAnchor><CategoryController fx:constant="SCROLLER_SIDE_OFFSET" /></AnchorPane.rightAnchor>
-        <AnchorPane.leftAnchor><CategoryController fx:constant="SCROLLER_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
+        <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
+        <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
         <prefHeight><HomeController fx:constant="OBJECT_HEIGHT" /></prefHeight>
         <GridPane id="typesGrid" fx:id="typesGrid" alignment="CENTER">
             <padding><Insets top="20" /></padding>

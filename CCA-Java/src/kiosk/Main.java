@@ -15,13 +15,14 @@ public class Main extends Application {
     public static Order order = new Order();
 
     /* Constants */
-    private static Scene homeScreen;
+    private static Scene homeScreen, splashScreen;
     public static final int WIDTH = 600, HEIGHT = 800;
     public static final int HALF_WIDTH = 300;
     static final int QUARTER_HEIGHT = 200;
 
     /* Getters */
     static Scene getHomeScreen() { return homeScreen; }
+    static Scene getSplashScreen() { return splashScreen; }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -29,17 +30,17 @@ public class Main extends Application {
         /* Add SidePanel to everything */
         AnchorPane sideBar = FXMLLoader.load(getClass().getResource("navigationDrawer.fxml"));
         HomeController.sideBar = sideBar;
-        OrderController.sideBar = sideBar;
         CategoryController.sideBar = sideBar;
+        OrderController.sideBar = sideBar;
 
         /* Load Every Scene */
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
-        Scene splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
+        splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
         homeScreen = new Scene(homeRoot, WIDTH, HEIGHT);
 
         /* Add CSS to every screen */
-        for (Scene scene : new Scene[] {splashScreen, homeScreen}) {
+        for (Scene scene : new Scene[] { splashScreen, homeScreen }) {
             scene.getStylesheets().addAll(
                     "/css/master.css",
                     "/css/navigation.css"

@@ -9,7 +9,7 @@ import kiosk.Main;
 
 public class HomeItemController {
     public static final int IMAGE_WIDTH = 250;
-    public static final int IMAGE_HEIGHT = 160;
+    public static final int IMAGE_HEIGHT = 275;
 
     private String category;
 

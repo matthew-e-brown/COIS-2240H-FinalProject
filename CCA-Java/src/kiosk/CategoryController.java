@@ -19,9 +19,6 @@ import java.util.ResourceBundle;
 import static kiosk.Main.order;
 
 public class CategoryController implements Initializable {
-    public static final int SCROLLER_TOP_POS = HomeController.OBJECT_TOP_POS - HomeController.GRID_GAP;
-    public static final int SCROLLER_SIDE_OFFSET = (int)(HomeController.OBJECT_SIDE_OFFSET * 0.85);
-
     @FXML AnchorPane root;
     @FXML Button hamburger;
     @FXML GridPane typesGrid;
@@ -67,6 +64,12 @@ public class CategoryController implements Initializable {
         double width = numberPane.getPrefWidth();
         numberPane.setPrefHeight(width);
         numberPane.setClip(new Circle(width / 2, width / 2, width / 2));
+
+        int orderLength = order.getLength();
+        if (orderLength > 0) {
+            numberPane.setVisible(true);
+            orderNumber.setText(String.valueOf(orderLength));
+        }
     }
 
     private void openSideMenu() {
@@ -77,9 +80,5 @@ public class CategoryController implements Initializable {
         if (!numberPane.isVisible()) numberPane.setVisible(true); //Show it if it doesn't exist
         int n = Integer.parseInt(this.orderNumber.getText());
         orderNumber.setText(String.valueOf(++n));
-    }
-
-    public void setOrderIcon(int amount) {
-        orderNumber.setText(String.valueOf(amount));
     }
 }
