@@ -1,5 +1,5 @@
 .bt-main {
-    -fx-font-family: henderson-slab-basic, serif;
+    -fx-font-family: henderson-slab-basic, sans-serif;
     -fx-font-weight: bold;
     -fx-background-color: linear-gradient(to top, #e09d00, #ffe14d);
     -fx-effect: dropshadow(gaussian, #00000077, 10, 0, 0, 5);
@@ -19,27 +19,21 @@
 }
 
 .bt-small {
-    -fx-font-weight: normal;
+    -fx-font-weight: bold;
     -fx-font-size: 10pt;
 }
 
-/* Button for Nav-Menu */
-#hamburger {
-    -fx-background-image: url('/img/hamburgericon.png');
-    -fx-background-size: 40 40;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-pref-width: 56px;
-    -fx-pref-height: 56px;
+.category-item, .home-item {
+    -fx-effect: dropshadow(two-pass-box, #00000044, 8, 0, 5, 5)
 }
 
-#hamburger-close {
-    -fx-background-image: url('/img/cross.png');
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-    -fx-background-size: 20 20;
-    -fx-min-width: 0;
-    -fx-min-height: 0;
-    -fx-pref-width: 36px;
-    -fx-pref-height: 36px;
+.order-number Text {
+    -fx-font-family: "Henderson Slab", sans-serif;
+    -fx-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 17pt;
+}
+
+.order-number {
+    -fx-background-color: #bf0000;
 }

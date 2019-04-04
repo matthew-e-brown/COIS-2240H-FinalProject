@@ -6,7 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import kiosk.*?>
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.OrderController">
+<?import javafx.scene.control.TableView?>
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
     <StackPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
@@ -17,8 +18,14 @@
             <fitHeight><HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
             <Image url="/img/splashScreen.png" />
         </ImageView>
-        <Button id="hamburger" mnemonicParsing="false" onAction="#openSideMenu" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
+        <Button fx:id="hamburger" id="hamburger" mnemonicParsing="false" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
         </Button>
     </StackPane>
+    <TableView fx:id="orderTable">
+        <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
+        <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+        <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
+        <prefHeight><HomeController fx:constant="OBJECT_HEIGHT" /></prefHeight>
+    </TableView>
 </AnchorPane>

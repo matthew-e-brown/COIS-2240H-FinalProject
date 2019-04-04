@@ -9,7 +9,7 @@ import kiosk.Main;
 
 public class HomeItemController {
     public static final int IMAGE_WIDTH = 250;
-    public static final int IMAGE_HEIGHT = 160;
+    public static final int IMAGE_HEIGHT = 275;
 
     private String category;
 
@@ -25,5 +25,5 @@ public class HomeItemController {
     }
 
     // Cannot be @FXML because it is referenced sans-Controller
-    public void changeScene() { Main.selectCategory(this.root, this.category); }
+    public void selectCategory() { Main.selectCategory(this.root, this.category); }
 }
