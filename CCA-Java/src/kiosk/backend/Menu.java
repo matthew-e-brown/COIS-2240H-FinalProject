@@ -7,8 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * The <code>Menu</code> class is a static class which contains
+ * methods for querying the Menu Table in the database.
+ */
 public class Menu {
-    /* Gets a list of 'types' (Breakfast, Burgers, etc.) from the Menu Table in the database */
+    /**
+     * Gets a list of 'types' (Breakfast, Burgers, etc.) from the Menu Table in the database.
+     * @return ArrayList&lt;String&gt; A list of all food 'types' in the Menu Table in the database.
+     */
     public static ArrayList<String> generateTypes() {
         ArrayList<String> types = new ArrayList<>(); // create blank arraylist to be filled with the items from the database
         try {
@@ -22,7 +29,13 @@ public class Menu {
         return types; // return the arraylist containing string values of the different types of food available on the menu
     }
 
-    /* Gets a list of 'items' (Vanilla Cone etc.) from the Menu table in the database, by the type (Snacks and Treats etc.) */
+    /**
+     * Gets a list of 'items' (Vanilla Cone etc.) from the Menu Table in the database, by the type
+     * (Snacks and Treats etc.)
+     * @param type The type of item (e.g., Breakfast, Burgers, Salads, etc.).
+     * @return ArrayList&lt;String&gt; A list containing the names of all items in the Menu Table for the
+     * specified <code>type</code>.
+     */
     public static ArrayList<String> getItemsByType(String type) {
         ArrayList<String> items = new ArrayList<>(); // create blank arraylist to be filled with the items based on a given type from the database
         try {
@@ -37,7 +50,11 @@ public class Menu {
         return items; // return the arraylist containing string values of the different item names based on the given type
     }
 
-    /* Gets the filepath of the image from the Menu Table in the database, for the food item named 'name' */
+    /**
+     * Gets the filepath of the image from the Menu Table in the database, for the food item named <code>name</code>.
+     * @param name The name of the food or drink item for which the filepath is desired.
+     * @return String The filepath of the image corresponding to the food item named <code>name</code>.
+     */
     public static String getFilepath(String name) {
         String filepath = null; //  initialized filepath as a null value incase no filepath is found
         try {
@@ -50,7 +67,11 @@ public class Menu {
         return filepath; // return the string filepath that was retrieved from the database
     }
 
-    /* Gets the price from the Menu Table in the database, for the food item named 'name' */
+    /**
+     * Gets the price from the Menu Table in the database, for the food item named <code>name</code>.
+     * @param name The name of the food or drink item for which the price is desired.
+     * @return float The price of the food or drink item named <code>name</code>.
+     */
     public static float getPrice(String name) {
         float price = 0; //  initialized the price to a default $0.00
         try {
