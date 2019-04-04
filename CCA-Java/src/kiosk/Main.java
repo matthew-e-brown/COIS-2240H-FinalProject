@@ -15,7 +15,8 @@ public class Main extends Application {
     public static Order order = new Order();
 
     /* Constants */
-    private static Scene homeScreen, splashScreen;
+    private static Scene homeScreen, splashScreen, orderScreen;
+    private static OrderController orderController = new OrderController();
     public static final int WIDTH = 600, HEIGHT = 800;
     public static final int HALF_WIDTH = 300;
     static final int QUARTER_HEIGHT = 200;
@@ -23,6 +24,8 @@ public class Main extends Application {
     /* Getters */
     static Scene getHomeScreen() { return homeScreen; }
     static Scene getSplashScreen() { return splashScreen; }
+    static Scene getOrderScreen() { return orderScreen; }
+    static OrderController getOrderController() { return orderController; }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -36,11 +39,18 @@ public class Main extends Application {
         /* Load Every Scene */
         Parent splashRoot = FXMLLoader.load(getClass().getResource("splash.fxml"));
         Parent homeRoot = FXMLLoader.load(getClass().getResource("home.fxml"));
+
+        /* Order is special because I need to use the controller's method outside of initialize */
+        FXMLLoader orderLoader = new FXMLLoader(Main.class.getResource("order.fxml"));
+        orderLoader.setController(orderController);
+        Parent orderRoot = orderLoader.load();
+
         splashScreen = new Scene(splashRoot, WIDTH, HEIGHT);
         homeScreen = new Scene(homeRoot, WIDTH, HEIGHT);
+        orderScreen = new Scene(orderRoot, WIDTH, HEIGHT);
 
         /* Add CSS to every screen */
-        for (Scene scene : new Scene[] { splashScreen, homeScreen }) {
+        for (Scene scene : new Scene[] { splashScreen, homeScreen, orderScreen }) {
             scene.getStylesheets().addAll(
                     "/css/master.css",
                     "/css/navigation.css"

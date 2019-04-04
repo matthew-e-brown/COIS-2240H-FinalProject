@@ -43,7 +43,7 @@
             </rowConstraints>
         </GridPane>
     </ScrollPane>
-    <Button styleClass="bt-main" text="View Order" AnchorPane.bottomAnchor="18" AnchorPane.rightAnchor="20" />
+    <Button fx:id="orderButton" styleClass="bt-main" text="View Order" AnchorPane.bottomAnchor="18" AnchorPane.rightAnchor="20" />
     <Pane fx:id="numberPane" styleClass="order-number" prefWidth="50" AnchorPane.bottomAnchor="45" visible="false" AnchorPane.rightAnchor="-5">
         <Text fx:id="orderNumber" fill="white" layoutX="18.0" layoutY="25.0" text="0" textAlignment="CENTER" textOrigin="CENTER"/>
     </Pane>
