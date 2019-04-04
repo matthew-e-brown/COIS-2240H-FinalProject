@@ -25,7 +25,16 @@ public class Item {
      * @param name  The name of the food or drink item.
      * @param price The price of the food or drink item.
      */
+    public Item(String name, float price, int quantity) {
+        // set all the attributes using arguments from the Constructor
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    /* Constructor without Quantity */
     public Item(String name, float price) {
+        // set attributes using arguments in the Constructor and set attribute quantity to default value of 1
         this.name = name;
         this.price = price;
         this.quantity = 1;
@@ -36,27 +45,21 @@ public class Item {
      *
      * @return String The name of the food or drink item.
      */
-    public String getName() {
-        return this.name;
-    }
-
+    public String getName() { return this.name; }
+  
     /**
      * Gets the price of the food or drink item.
      *
      * @return float The price of the food or drink item.
      */
-    public float getPrice() {
-        return this.price;
-    }
+    public float getPrice() { return this.price; }
 
     /**
      * Gets the quantity of the food or drink item in the user's order.
      *
      * @return int The number of items in the user's order with name <code>this.name</code>.
      */
-    public int getQuantity() {
-        return this.quantity;
-    }
+    public int getQuantity() { return this.quantity; }
 
     /**
      * Increases the quantity by a specified <code>amount</code> in the user's order
@@ -67,9 +70,7 @@ public class Item {
      *
      * @param amount The amount by which the quantity should be increased by.
      */
-    public void incrementQuantity(int amount) {
-        this.quantity += amount;
-    }
+    public void incrementQuantity(int amount) { this.quantity += amount; }
 
     /**
      * Decreases the quantity by a specified <code>amount</code> in the user's order
@@ -78,8 +79,6 @@ public class Item {
      *
      * @param amount The amount by which the quantity should be decreased by.
      */
-    public void decrementQuantity(int amount) {
-        this.quantity -= amount;
-    }
+    public void decrementQuantity(int amount) { this.quantity -= amount; }
 }
 

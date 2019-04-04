@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     public static final int BANNER_HEIGHT = Main.QUARTER_HEIGHT;
     public static final int OBJECT_HEIGHT = (int)((Main.HEIGHT - BANNER_HEIGHT) * 0.85);
-    public static final int OBJECT_SIDE_OFFSET = (int)(Main.WIDTH * 0.065);
+    public static final int OBJECT_SIDE_OFFSET = (int)(Main.WIDTH * 0.05);
     public static final int OBJECT_TOP_POS = BANNER_HEIGHT + OBJECT_SIDE_OFFSET;
     public static final int GRID_GAP = 15;
 
@@ -37,7 +37,7 @@ public class HomeController implements Initializable {
                 StackPane itemPane = loader.load();
                 // To get access to setter Methods
                 controller.button.setText(category);
-                controller.button.setOnAction((event) -> controller.changeScene());
+                controller.button.setOnAction((event) -> controller.selectCategory());
 
                 //Put a random image URL in there
                 ArrayList<String> items = Menu.getItemsByType(category);

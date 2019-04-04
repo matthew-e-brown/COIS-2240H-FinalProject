@@ -2,29 +2,38 @@ package kiosk;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import kiosk.backend.Item;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static kiosk.Main.order;
+
 public class OrderController implements Initializable {
     @FXML AnchorPane root;
+    @FXML TableView orderTable;
+    @FXML Button hamburger;
+
     static AnchorPane sideBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /* Create the table */
-        TableView<Item> table;
-        /* This block will be removed, just for testing */
-        Order order = new Order();
-        order.addToOrder("greasySticks", 3.69F);
-        order.addToOrder("vanilla cone", 2.0F);
-        order.addToOrder("greasySticks", 3.69F);
+        refreshTable();
+        hamburger.setOnAction(event -> openSideMenu());
+    }
+
+    void refreshTable() {
+        orderTable = generateTable();
+        System.out.println(orderTable);
+    }
+
+    private TableView<Item> generateTable() {
+        TableView<Item> table = new TableView<>();
 
         //Name column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
@@ -41,15 +50,19 @@ public class OrderController implements Initializable {
         quantityColumn.setMinWidth(100);
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
 
-        table = new TableView<>();
+        /* Create the table */
         table.setItems(order.getItems());
-        table.getColumns().addAll(nameColumn, priceColumn, quantityColumn);
 
-        root.getChildren().add(new VBox(table));
+        /* Add columns (don't use addAll to avoid issue with unchecked generics) */
+        table.getColumns().add(nameColumn);
+        table.getColumns().add(priceColumn);
+        table.getColumns().add(quantityColumn);
+
+        System.out.println(table);
+        return table;
     }
 
-    @FXML
-    public void openSideMenu() {
+    private void openSideMenu() {
         root.getChildren().add(sideBar);
     }
 }

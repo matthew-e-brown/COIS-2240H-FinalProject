@@ -10,7 +10,7 @@ import kiosk.backend.Item;
  * Food and drink items can be added to the order, removed from the order, or the order can be reset.
  *
  */
-class Order {
+public class Order {
     /**
      * The list of food and drink items currently in the user's order. An <code>Observable List</code> of
      * <code>Item</code> objects.
@@ -27,16 +27,12 @@ class Order {
      * Constructs an empty <code>observableArrayList</code> of <code>Item</code> objects.
      * An instance of <code>Order</code> is empty until the user adds an item to their order.
      */
-    Order() {
-        this.items = FXCollections.observableArrayList();
-    }
+    Order() { this.items = FXCollections.observableArrayList(); }
 
     /**
      * Resets the user's order, by clearing all <code>Item</code> objects from the <code>items</code> field.
      */
-    void resetOrder() {
-        this.items = FXCollections.observableArrayList();
-    }
+    public void resetOrder() { this.items = FXCollections.observableArrayList(); }
 
     /**
      * Adds food / drink item to the user's order. If the
@@ -53,7 +49,7 @@ class Order {
      * @param price The price of the food or drink item to be added to the order.
      *
      */
-    void addToOrder(String name, float price) {
+    public void addToOrder(String name, float price) {
         for (Item item : this.items) {
             if (item.getName().equals(name)) {
                 item.incrementQuantity(1);
@@ -69,10 +65,11 @@ class Order {
      * from the field <code>items</code>.
      * @param name The name of the food or drink item to be removed.
      */
-    void removeFromOrder(String name) {
+    public void removeFromOrder(String name) {
         for (int i = 0; i < this.items.size(); i++) {
             if (this.items.get(i).getName().equals(name)) {
                 this.items.remove(i);
+                return; //leave the function, you're finished
             }
         }
     }
@@ -81,9 +78,11 @@ class Order {
      * Calculates the cost of the user's order before tax (the subtotal).
      * @return float The subtotal of the user's order, before taxes are added.
      */
-    float calculateSubtotal() {
+    public float calculateSubtotal() {
         float total = 0;
         for (Item item : this.items) { total += item.getPrice() * item.getQuantity(); }
         return total;
     }
+  
+    public int getLength() { return this.items.size(); }
 }
