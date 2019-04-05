@@ -1,5 +1,10 @@
 package kiosk.backend;
 
+import javafx.scene.control.Button;
+import kiosk.Main;
+
+import java.text.NumberFormat;
+
 /**
  * Objects of the <code>Item</code> class are food or drink items
  * in the user's order.
@@ -19,25 +24,42 @@ public class Item {
     private int quantity;
 
     /**
+     * The button that is visible in the table on the order screen, which allows user to increase quantity  of
+     * this food or drink item in their order by 1.
+     */
+    private Button increaseQuantityButton;
+
+    /**
+     * The button that is visible in the table on the order screen, which allows user to decrease quantity of
+     * this food or drink item in their order by 1.
+     */
+    private Button decreaseQuantityButton;
+
+    /**
      * Constructor which creates a food or drink <code>Item</code> with a default quantity of 1.
      * This constructor is called when the user adds a new food or drink item to their order.
      *
      * @param name  The name of the food or drink item.
      * @param price The price of the food or drink item.
      */
-    public Item(String name, float price, int quantity) {
-        // set all the attributes using arguments from the Constructor
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    /* Constructor without Quantity */
     public Item(String name, float price) {
         // set attributes using arguments in the Constructor and set attribute quantity to default value of 1
         this.name = name;
         this.price = price;
         this.quantity = 1;
+        this.increaseQuantityButton = new Button("+");
+        this.decreaseQuantityButton = new Button("-");
+        this.increaseQuantityButton.setOnAction(event -> {
+            this.quantity++;
+            Main.getOrderController().orderTable.refresh();
+            Main.getOrderController().refreshLabels();
+        });
+        this.decreaseQuantityButton.setOnAction(event -> {
+            if (this.quantity > 1) this.quantity--;
+            else Main.getOrderController().orderTable.getItems().remove(this);
+            Main.getOrderController().orderTable.refresh();
+            Main.getOrderController().refreshLabels();
+        });
     }
 
     /**
@@ -50,8 +72,13 @@ public class Item {
     /**
      * Gets the price of the food or drink item.
      *
-     * @return float The price of the food or drink item.
+     * @return String The price of the food or drink item, formatted as local currency.
      */
+    public String getPriceString() {
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        return currencyFormat.format(this.price);
+    }
+
     public float getPrice() { return this.price; }
 
     /**
@@ -60,25 +87,9 @@ public class Item {
      * @return int The number of items in the user's order with name <code>this.name</code>.
      */
     public int getQuantity() { return this.quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
-    /**
-     * Increases the quantity by a specified <code>amount</code> in the user's order
-     * for the food or drink item with name <code>this.name</code>.
-     * This method is called when the user presses "add to order" more than once
-     * for the same food or drink item, or when the user presses the "+" button
-     * on the View Order page.
-     *
-     * @param amount The amount by which the quantity should be increased by.
-     */
-    public void incrementQuantity(int amount) { this.quantity += amount; }
-
-    /**
-     * Decreases the quantity by a specified <code>amount</code> in the user's order
-     * for the food or drink item with name <code>this.name</code>.
-     * This method is called when the user presses the "-" button on the View Order page.
-     *
-     * @param amount The amount by which the quantity should be decreased by.
-     */
-    public void decrementQuantity(int amount) { this.quantity -= amount; }
+    public Button getIncreaseQuantityButton() { return this.increaseQuantityButton; }
+    public Button getDecreaseQuantityButton() { return this.decreaseQuantityButton; }
 }
 
