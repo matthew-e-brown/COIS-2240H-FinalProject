@@ -1,5 +1,9 @@
 package kiosk.backend;
 
+import javafx.scene.control.Button;
+import kiosk.Main;
+import kiosk.OrderController;
+
 /**
  * Objects of the <code>Item</code> class are food or drink items
  * in the user's order.
@@ -19,6 +23,18 @@ public class Item {
     private int quantity;
 
     /**
+     * The button that is visible in the table on the order screen, which allows user to increase quantity  of
+     * this food or drink item in their order by 1.
+     */
+    private Button increaseQuantityButton;
+
+    /**
+     * The button that is visible in the table on the order screen, which allows user to decrease quantity of
+     * this food or drink item in their order by 1.
+     */
+    private Button decreaseQuantityButton;
+
+    /**
      * Constructor which creates a food or drink <code>Item</code> with a default quantity of 1.
      * This constructor is called when the user adds a new food or drink item to their order.
      *
@@ -30,6 +46,20 @@ public class Item {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.increaseQuantityButton = new Button("+");
+        this.decreaseQuantityButton = new Button("-");
+        this.increaseQuantityButton.setOnAction(event -> {
+            this.incrementQuantity(1);
+            Main.getOrderController().orderTable.getColumns().clear();
+            Main.getOrderController().refreshTable(Main.getOrderController().orderTable);
+        });
+        this.decreaseQuantityButton.setOnAction(event -> {
+            if (this.quantity > 0) {
+                this.decrementQuantity(1);
+            }
+            Main.getOrderController().orderTable.getColumns().clear();
+            Main.getOrderController().refreshTable(Main.getOrderController().orderTable);
+        });
     }
 
     /* Constructor without Quantity */
@@ -38,6 +68,20 @@ public class Item {
         this.name = name;
         this.price = price;
         this.quantity = 1;
+        this.increaseQuantityButton = new Button("+");
+        this.decreaseQuantityButton = new Button("-");
+        this.increaseQuantityButton.setOnAction(event -> {
+            this.incrementQuantity(1);
+            Main.getOrderController().orderTable.getColumns().clear();
+            Main.getOrderController().refreshTable(Main.getOrderController().orderTable);
+        });
+        this.decreaseQuantityButton.setOnAction(event -> {
+            if (this.quantity > 0) {
+                this.decrementQuantity(1);
+            }
+            Main.getOrderController().orderTable.getColumns().clear();
+            Main.getOrderController().refreshTable(Main.getOrderController().orderTable);
+        });
     }
 
     /**
@@ -60,6 +104,9 @@ public class Item {
      * @return int The number of items in the user's order with name <code>this.name</code>.
      */
     public int getQuantity() { return this.quantity; }
+
+    public Button getIncreaseQuantityButton() { return this.increaseQuantityButton; }
+    public Button getDecreaseQuantityButton() { return this.decreaseQuantityButton; }
 
     /**
      * Increases the quantity by a specified <code>amount</code> in the user's order

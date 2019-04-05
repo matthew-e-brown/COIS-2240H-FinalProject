@@ -25,7 +25,7 @@ public class Main extends Application {
     static Scene getHomeScreen() { return homeScreen; }
     static Scene getSplashScreen() { return splashScreen; }
     static Scene getOrderScreen() { return orderScreen; }
-    static OrderController getOrderController() { return orderController; }
+    public static OrderController getOrderController() { return orderController; }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
