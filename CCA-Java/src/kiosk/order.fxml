@@ -6,6 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import kiosk.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
     <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
@@ -15,7 +17,7 @@
         <ImageView>
             <fitWidth><Main fx:constant="WIDTH" /></fitWidth>
             <fitHeight><HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
-            <Image url="/img/splashScreen.png" />
+            <Image url="/img/promoBanner.png" />
         </ImageView>
         <Button fx:id="hamburger" id="hamburger" mnemonicParsing="false" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
@@ -59,4 +61,25 @@
         <AnchorPane.bottomAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.bottomAnchor>
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
     </Button>
+    <AnchorPane visible="false" managed="false" fx:id="confirmation" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0">
+        <Rectangle fill="#00000077" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+            <width><Main fx:constant="WIDTH" /></width>
+            <height><Main fx:constant="HEIGHT" /></height>
+        </Rectangle>
+        <StackPane styleClass="order-popup">
+            <AnchorPane.leftAnchor><OrderController fx:constant="ANCHOR_SIDE_DISTANCE"/></AnchorPane.leftAnchor>
+            <AnchorPane.rightAnchor><OrderController fx:constant="ANCHOR_SIDE_DISTANCE"/></AnchorPane.rightAnchor>
+            <AnchorPane.topAnchor><OrderController fx:constant="ANCHOR_TOP_BOTTOM_DISTANCE"/></AnchorPane.topAnchor>
+            <AnchorPane.bottomAnchor><OrderController fx:constant="ANCHOR_TOP_BOTTOM_DISTANCE"/></AnchorPane.bottomAnchor>
+            <prefWidth><OrderController fx:constant="POPUP_WIDTH" /></prefWidth>
+            <prefHeight><OrderController fx:constant="POPUP_HEIGHT" /></prefHeight>
+            <Text styleClass="popup-number" fx:id="orderNumber" textAlignment="CENTER" text="Order #">
+                <StackPane.margin><Insets bottom="85" /></StackPane.margin>
+            </Text>
+            <Text styleClass="popup-text" text="Your order has been sent to the kitchen!" />
+            <Button fx:id="continueButton" styleClass="bt-main" text="OK ✅">
+                <StackPane.margin><Insets top="125" /></StackPane.margin>
+            </Button>
+        </StackPane>
+    </AnchorPane>
 </AnchorPane>
