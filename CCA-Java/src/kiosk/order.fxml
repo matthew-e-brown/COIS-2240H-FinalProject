@@ -27,18 +27,30 @@
         <layoutY><HomeController fx:constant="OBJECT_TOP_POS" /></layoutY>
         <prefHeight><OrderController fx:constant="TABLE_HEIGHT" /></prefHeight>
     </TableView>
-    <TextField fx:id="subtotal" editable="false">
+    <HBox alignment="CENTER_LEFT">
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <layoutY><OrderController fx:constant="SUBTOTAL_POS" /></layoutY>
-    </TextField>
-    <TextField fx:id="hst" editable="false">
+        <Label styleClass="order-label" text="Subtotal:">
+            <padding><Insets right="10"/></padding>
+        </Label>
+        <TextField fx:id="subtotal" editable="false" />
+    </HBox>
+    <HBox alignment="CENTER_LEFT">
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <layoutY><OrderController fx:constant="HST_POS" /></layoutY>
-    </TextField>
-    <TextField fx:id="total" editable="false">
+        <Label styleClass="order-label" text="HST:">
+            <padding><Insets right="10"/></padding>
+        </Label>
+        <TextField fx:id="hst" editable="false" />
+    </HBox>
+    <HBox alignment="CENTER_LEFT">
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <layoutY><OrderController fx:constant="TOTAL_POS" /></layoutY>
-    </TextField>
+        <Label styleClass="order-label" text="Total:">
+            <padding><Insets right="10"/></padding>
+        </Label>
+        <TextField fx:id="total" editable="false" />
+    </HBox>
     <Button fx:id="resetOrder" styleClass="bt-main" text="Reset Order" >
         <AnchorPane.bottomAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.bottomAnchor>
         <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>

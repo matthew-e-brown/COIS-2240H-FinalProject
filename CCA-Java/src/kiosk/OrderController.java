@@ -1,15 +1,19 @@
 package kiosk;
 
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import kiosk.backend.Item;
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 import static kiosk.HomeController.BANNER_HEIGHT;
@@ -28,6 +32,10 @@ public class OrderController implements Initializable {
     @FXML Button submitOrder;
     @FXML Button resetOrder;
 
+    @FXML TextField hst;
+    @FXML TextField subtotal;
+    @FXML TextField total;
+
     static AnchorPane sideBar;
 
     @Override
@@ -39,6 +47,9 @@ public class OrderController implements Initializable {
     }
 
     private void generateTable(TableView<Item> table) {
+        ObservableList<Item> itemList = order.getItems();
+        itemList.addListener((ListChangeListener<Item>) c -> refreshLabels());
+
         //Name column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setMinWidth(200);
@@ -64,7 +75,7 @@ public class OrderController implements Initializable {
         decreaseColumn.setMinWidth(20);
         decreaseColumn.setCellValueFactory(new PropertyValueFactory<>("DecreaseQuantityButton"));
 
-        table.setItems(order.getItems());
+        table.setItems(itemList);
 
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(45f/100f)); //45%
@@ -85,6 +96,16 @@ public class OrderController implements Initializable {
             col.setResizable(false);
             table.getColumns().add(col);
         }
+    }
+
+    public void refreshLabels() {
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        float sub = order.calculateSubtotal();
+        float hst = sub * 0.130003F;
+        float tot = sub + hst;
+        this.subtotal.setText(currencyFormat.format(sub));
+        this.hst.setText(currencyFormat.format(hst));
+        this.total.setText(currencyFormat.format(tot));
     }
 
     private void openSideMenu() {

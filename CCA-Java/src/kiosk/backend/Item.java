@@ -52,11 +52,13 @@ public class Item {
         this.increaseQuantityButton.setOnAction(event -> {
             this.quantity++;
             Main.getOrderController().orderTable.refresh();
+            Main.getOrderController().refreshLabels();
         });
         this.decreaseQuantityButton.setOnAction(event -> {
             if (this.quantity > 1) this.quantity--;
             else Main.getOrderController().orderTable.getItems().remove(this);
             Main.getOrderController().orderTable.refresh();
+            Main.getOrderController().refreshLabels();
         });
     }
 
