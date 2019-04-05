@@ -92,7 +92,7 @@ public class OrderController implements Initializable {
         table.setItems(itemList);
 
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(45f/100f)); //45%
+        nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(44f/100f)); //45%
         priceColumn.prefWidthProperty().bind(table.widthProperty().multiply(20f/100f)); //20%
         quantityColumn.prefWidthProperty().bind(table.widthProperty().multiply(15f/100f)); //15%
         increaseColumn.prefWidthProperty().bind(table.widthProperty().multiply(10f/100f)); //10%
