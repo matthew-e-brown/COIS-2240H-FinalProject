@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import kiosk.backend.Item;
 
 import java.net.URL;
@@ -26,11 +27,19 @@ public class OrderController implements Initializable {
     public static final int HST_POS = SUBTOTAL_POS + OBJECT_SIDE_OFFSET;
     public static final int TOTAL_POS = HST_POS + OBJECT_SIDE_OFFSET;
 
+    public static final int POPUP_WIDTH = (int)(Main.HALF_WIDTH * 1.35);
+    public static final int POPUP_HEIGHT = (int)(Main.QUARTER_HEIGHT * 1.35);
+    public static final int ANCHOR_SIDE_DISTANCE = Main.HALF_WIDTH - POPUP_WIDTH / 2;
+    public static final int ANCHOR_TOP_BOTTOM_DISTANCE = Main.HEIGHT / 2 - POPUP_HEIGHT / 2;
+
     @FXML AnchorPane root;
     @FXML public TableView<Item> orderTable;
     @FXML Button hamburger;
     @FXML Button submitOrder;
     @FXML Button resetOrder;
+    @FXML AnchorPane confirmation;
+    @FXML Text orderNumber;
+    @FXML Button continueButton;
 
     @FXML TextField hst;
     @FXML TextField subtotal;
@@ -112,7 +121,11 @@ public class OrderController implements Initializable {
         root.getChildren().add(sideBar);
     }
 
-    private void displayConfirmation() { System.out.println("Order received"); }
+    private void displayConfirmation() {
+        orderNumber.setText("Order #" + order.getItems().hashCode());
+        confirmation.setManaged(true);
+        confirmation.setVisible(true);
+    }
 
     private void clearOrder() {
         //Clear all items in order, then clear order table and refresh it

@@ -106,3 +106,17 @@
     -fx-font-weight: bold;
     -fx-font-size: 12pt;
 }
+
+.order-popup {
+    -fx-background-color: #EFEFEF;
+}
+
+.popup-number {
+    -fx-font-size: 16pt;
+    -fx-font-weight: bold;
+}
+
+.popup-text {
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+}
