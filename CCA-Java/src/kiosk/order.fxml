@@ -42,6 +42,12 @@
         <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
         <layoutY><OrderController fx:constant="TOTAL_POS" /></layoutY>
     </TextField>
-    <Button fx:id="resetOrder" styleClass="bt-main" text="Reset Order" AnchorPane.bottomAnchor="18" AnchorPane.leftAnchor="20" />
-    <Button fx:id="submitOrder" styleClass="bt-main" text="Submit Order" AnchorPane.bottomAnchor="18" AnchorPane.rightAnchor="20" />
+    <Button fx:id="resetOrder" styleClass="bt-main" text="Reset Order" >
+        <AnchorPane.bottomAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.bottomAnchor>
+        <AnchorPane.leftAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.leftAnchor>
+    </Button>
+    <Button fx:id="submitOrder" styleClass="bt-main" text="Submit Order" >
+        <AnchorPane.bottomAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.bottomAnchor>
+        <AnchorPane.rightAnchor><HomeController fx:constant="OBJECT_SIDE_OFFSET" /></AnchorPane.rightAnchor>
+    </Button>
 </AnchorPane>

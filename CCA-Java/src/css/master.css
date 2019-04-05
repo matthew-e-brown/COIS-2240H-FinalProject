@@ -37,3 +37,51 @@
 .order-number {
     -fx-background-color: #bf0000;
 }
+
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to top, #e09d00, #ffe14d);
+    -fx-effect: dropshadow(gaussian, #00000077, 10, 0, 0, 5);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: henderson-slab-basic, sans-serif;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-font-family: henderson-slab-basic, sans-serif;
+    -fx-text-alignment: center;
+
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #fff4c1;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}

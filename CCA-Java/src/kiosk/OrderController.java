@@ -20,7 +20,7 @@ import static kiosk.HomeController.*;
 import static kiosk.Main.*;
 
 public class OrderController implements Initializable {
-    public static final int TABLE_HEIGHT = (int)((Main.HEIGHT - BANNER_HEIGHT) * 0.6);
+    public static final int TABLE_HEIGHT = (int)((Main.HEIGHT - BANNER_HEIGHT) * 0.55);
     public static final int SUBTOTAL_POS = BANNER_HEIGHT + TABLE_HEIGHT + 2 * OBJECT_SIDE_OFFSET;
     public static final int HST_POS = SUBTOTAL_POS + OBJECT_SIDE_OFFSET;
     public static final int TOTAL_POS = HST_POS + OBJECT_SIDE_OFFSET;
@@ -71,19 +71,25 @@ public class OrderController implements Initializable {
 
         /* Create the table */
         table.setItems(order.getItems());
+
+        table.setColumnResizePolicy( TableView.CONSTRAINED_RESIZE_POLICY );
+        nameColumn.setPrefWidth(1F * Integer.MAX_VALUE * 50);
+        priceColumn.setPrefWidth(1F * Integer.MAX_VALUE * 10);
+        quantityColumn.setPrefWidth(1F * Integer.MAX_VALUE * 10);
+        increaseQuantityColumn.setPrefWidth(1F * Integer.MAX_VALUE * 15);
+        decreaseQuantityColumn.setPrefWidth(1F * Integer.MAX_VALUE * 15);
 /*
-        nameColumn.setMaxWidth(1F * Integer.MAX_VALUE * 80);
-        priceColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
-        quantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
-        increaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
-        decreaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
-*/
-        int tableWidth = WIDTH - 2 * OBJECT_SIDE_OFFSET;
-        nameColumn.setPrefWidth(tableWidth * 0.6);
-        priceColumn.setPrefWidth(tableWidth * 0.10);
-        quantityColumn.setPrefWidth(tableWidth * 0.10);
-        increaseQuantityColumn.setPrefWidth(tableWidth * 0.10);
-        decreaseQuantityColumn.setPrefWidth(tableWidth * 0.10);
+        nameColumn.prefWidthProperty().bind(table.widthProperty().divide(2));
+        priceColumn.prefWidthProperty().bind(table.widthProperty().divide(8));
+        quantityColumn.prefWidthProperty().bind(table.widthProperty().divide(8));
+        increaseQuantityColumn.prefWidthProperty().bind(table.widthProperty().divide(8));
+        decreaseQuantityColumn.prefWidthProperty().bind(table.widthProperty().divide(8));
+        nameColumn.setPrefWidth(tableWidth * 0.4);
+        priceColumn.setPrefWidth(tableWidth * 0.15);
+        quantityColumn.setPrefWidth(tableWidth * 0.15);
+        increaseQuantityColumn.setPrefWidth(tableWidth * 0.15);
+        decreaseQuantityColumn.setPrefWidth(tableWidth * 0.15);
+        */
 
         /* Add columns (don't use addAll to avoid issue with unchecked generics) */
         table.getColumns().add(nameColumn);
