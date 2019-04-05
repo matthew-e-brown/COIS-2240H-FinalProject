@@ -14,10 +14,9 @@
     <StackPane AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <prefWidth><Main fx:constant="WIDTH" /></prefWidth>
         <prefHeight><kiosk.HomeController fx:constant="BANNER_HEIGHT" /></prefHeight>
-        <ImageView>
+        <ImageView fx:id="banner">
             <fitWidth><Main fx:constant="WIDTH" /></fitWidth>
             <fitHeight><kiosk.HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
-            <Image url="/img/splashScreen.png" />
         </ImageView>
         <Button id="hamburger" fx:id="hamburger" mnemonicParsing="false" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>
