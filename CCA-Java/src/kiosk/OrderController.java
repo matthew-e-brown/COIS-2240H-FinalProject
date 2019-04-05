@@ -12,22 +12,35 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import kiosk.backend.Item;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static kiosk.Main.order;
+import static kiosk.HomeController.*;
+import static kiosk.Main.*;
 
 public class OrderController implements Initializable {
+    public static final int TABLE_HEIGHT = (int)((Main.HEIGHT - BANNER_HEIGHT) * 0.6);
+    public static final int SUBTOTAL_POS = BANNER_HEIGHT + TABLE_HEIGHT + 2 * OBJECT_SIDE_OFFSET;
+    public static final int HST_POS = SUBTOTAL_POS + OBJECT_SIDE_OFFSET;
+    public static final int TOTAL_POS = HST_POS + OBJECT_SIDE_OFFSET;
     @FXML AnchorPane root;
     @FXML public TableView<Item> orderTable;
     @FXML Button hamburger;
+    @FXML Button submitOrder;
+    @FXML Button resetOrder;
+   // @FXML TextField subtotal;
 
     static AnchorPane sideBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         refreshTable(orderTable);
+        //subtotal = new TextField();
+        //subtotal.setText("hi");
         hamburger.setOnAction(event -> openSideMenu());
+        resetOrder.setOnAction(event -> clearOrder());
+        submitOrder.setOnAction(event -> displayConfirmation());
     }
 
     public void refreshTable(TableView<Item> table) {
@@ -47,23 +60,30 @@ public class OrderController implements Initializable {
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("Quantity"));
 
         //Increase Quantity column
-        TableColumn<Item, String> increaseQuantityColumn = new TableColumn<>("Increase Quantity");
+        TableColumn<Item, String> increaseQuantityColumn = new TableColumn<>("Add");
         increaseQuantityColumn.setMinWidth(20);
         increaseQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("IncreaseQuantityButton"));
 
         //Decrease Quantity column
-        TableColumn<Item, String> decreaseQuantityColumn = new TableColumn<>("Decrease Quantity");
+        TableColumn<Item, String> decreaseQuantityColumn = new TableColumn<>("Remove");
         decreaseQuantityColumn.setMinWidth(20);
         decreaseQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("DecreaseQuantityButton"));
 
         /* Create the table */
         table.setItems(order.getItems());
-
-        nameColumn.setMaxWidth(1F * Integer.MAX_VALUE * 70);
-        priceColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
-        quantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
-        increaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
-        decreaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
+/*
+        nameColumn.setMaxWidth(1F * Integer.MAX_VALUE * 80);
+        priceColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
+        quantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
+        increaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
+        decreaseQuantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 5);
+*/
+        int tableWidth = WIDTH - 2 * OBJECT_SIDE_OFFSET;
+        nameColumn.setPrefWidth(tableWidth * 0.6);
+        priceColumn.setPrefWidth(tableWidth * 0.10);
+        quantityColumn.setPrefWidth(tableWidth * 0.10);
+        increaseQuantityColumn.setPrefWidth(tableWidth * 0.10);
+        decreaseQuantityColumn.setPrefWidth(tableWidth * 0.10);
 
         /* Add columns (don't use addAll to avoid issue with unchecked generics) */
         table.getColumns().add(nameColumn);
@@ -75,5 +95,14 @@ public class OrderController implements Initializable {
 
     private void openSideMenu() {
         root.getChildren().add(sideBar);
+    }
+
+    private void displayConfirmation() { System.out.println("Order received"); }
+
+    private void clearOrder() {
+        //Clear all items in order, then clear order table and refresh it
+        order.resetOrder();
+        Main.getOrderController().orderTable.getColumns().clear();
+        Main.getOrderController().refreshTable(Main.getOrderController().orderTable);
     }
 }
