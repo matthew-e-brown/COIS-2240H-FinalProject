@@ -10,26 +10,33 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import kiosk.*?>
-<AnchorPane id="sideBar" fx:id="sideBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.NavigationController">
-    <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
-    <prefWidth><Main fx:constant="HALF_WIDTH" /></prefWidth>
-    <!-- StackPane lets me put two things on top of one-another. In this case, image and button. -->
-    <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <prefHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></prefHeight>
-        <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
-        <ImageView id="preview-image" pickOnBounds="true" preserveRatio="true">
-           <fitHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></fitHeight>
-           <fitWidth><NavigationController fx:constant="WIDTH" /></fitWidth>
-           <Image url="/img/menuPreview.png" />
-       </ImageView>
-       <Button id="hamburger-close" onAction="#closeSideMenu" styleClass="bt-main" StackPane.alignment="TOP_RIGHT">
-         <StackPane.margin><Insets left="15.0" top="15.0" right="15.0" bottom="15.0" /></StackPane.margin>
-      </Button>
-    </StackPane>
-    <!-- VBox is filled dynamically in Start -->
-    <VBox id="buttonContainer" alignment="TOP_CENTER" spacing="20">
-        <AnchorPane.topAnchor><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></AnchorPane.topAnchor>
-        <prefHeight><NavigationController fx:constant="HEIGHT" /></prefHeight>
-        <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
-    </VBox>
+<?import javafx.scene.shape.Rectangle?>
+<AnchorPane fx:id="sideBar" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kiosk.NavigationController">
+    <Rectangle fill="#00000077" AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+        <width><Main fx:constant="WIDTH" /></width>
+        <height><Main fx:constant="HEIGHT" /></height>
+    </Rectangle>
+    <AnchorPane styleClass="sideBar">
+        <prefHeight><Main fx:constant="HEIGHT" /></prefHeight>
+        <prefWidth><Main fx:constant="HALF_WIDTH" /></prefWidth>
+        <!-- StackPane lets me put two things on top of one-another. In this case, image and button. -->
+        <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <prefHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></prefHeight>
+            <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
+            <ImageView id="preview-image" pickOnBounds="true" preserveRatio="true">
+               <fitHeight><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></fitHeight>
+               <fitWidth><NavigationController fx:constant="WIDTH" /></fitWidth>
+               <Image url="/img/menuPreview.png" />
+           </ImageView>
+           <Button id="hamburger-close" onAction="#closeSideMenu" styleClass="bt-main" StackPane.alignment="TOP_RIGHT">
+             <StackPane.margin><Insets left="15.0" top="15.0" right="15.0" bottom="15.0" /></StackPane.margin>
+          </Button>
+        </StackPane>
+        <!-- VBox is filled dynamically in Start -->
+        <VBox id="buttonContainer" alignment="TOP_CENTER" spacing="20">
+            <AnchorPane.topAnchor><NavigationController fx:constant="NAV_BANNER_HEIGHT" /></AnchorPane.topAnchor>
+            <prefHeight><NavigationController fx:constant="HEIGHT" /></prefHeight>
+            <prefWidth><NavigationController fx:constant="WIDTH" /></prefWidth>
+        </VBox>
+    </AnchorPane>
 </AnchorPane>

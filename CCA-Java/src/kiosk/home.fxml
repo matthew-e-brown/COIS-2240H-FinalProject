@@ -16,7 +16,7 @@
         <ImageView>
             <fitWidth><Main fx:constant="WIDTH" /></fitWidth>
             <fitHeight><HomeController fx:constant="BANNER_HEIGHT" /></fitHeight>
-            <Image url="/img/splashScreen.png" />
+            <Image url="/img/promoBanner.png" />
         </ImageView>
         <Button id="hamburger" mnemonicParsing="false" onAction="#openSideMenu" styleClass="bt-main" StackPane.alignment="TOP_LEFT">
             <StackPane.margin><Insets left="20.0" top="18.0" /></StackPane.margin>

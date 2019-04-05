@@ -84,4 +84,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) { launch(args); }
+
+    static void resetKiosk(Stage primaryStage) {
+        primaryStage.setScene(splashScreen);
+    }
 }
