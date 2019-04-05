@@ -12,8 +12,9 @@ import kiosk.backend.Item;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static kiosk.HomeController.*;
-import static kiosk.Main.*;
+import static kiosk.HomeController.BANNER_HEIGHT;
+import static kiosk.HomeController.OBJECT_SIDE_OFFSET;
+import static kiosk.Main.order;
 
 public class OrderController implements Initializable {
     public static final int TABLE_HEIGHT = (int)((Main.HEIGHT - BANNER_HEIGHT) * 0.55);
