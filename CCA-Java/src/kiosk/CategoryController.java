@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -26,6 +28,7 @@ public class CategoryController implements Initializable {
     @FXML GridPane typesGrid;
     @FXML Pane numberPane;
     @FXML Text orderNumber;
+    @FXML ImageView banner;
 
     private String category;
     static AnchorPane sideBar;
@@ -34,6 +37,8 @@ public class CategoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        banner.setImage(new Image("file:src/img/Banners/" + this.category + ".png"));
+
         typesGrid.setVgap(15);
         typesGrid.setHgap(15);
 
