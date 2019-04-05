@@ -4,13 +4,11 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import kiosk.backend.Item;
 
 import java.net.URL;
@@ -53,11 +51,18 @@ public class OrderController implements Initializable {
         hamburger.setOnAction(event -> openSideMenu());
         resetOrder.setOnAction(event -> clearOrder());
         submitOrder.setOnAction(event -> displayConfirmation());
+        continueButton.setOnAction(event -> {
+            clearOrder();
+            confirmation.setVisible(false);
+            confirmation.setManaged(false);
+            Main.resetKiosk((Stage)root.getScene().getWindow());
+        });
     }
 
     private void generateTable(TableView<Item> table) {
         ObservableList<Item> itemList = order.getItems();
         itemList.addListener((ListChangeListener<Item>) c -> refreshLabels());
+        table.setPlaceholder(new Label("Add some items to your order to see them here!"));
 
         //Name column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
@@ -122,9 +127,11 @@ public class OrderController implements Initializable {
     }
 
     private void displayConfirmation() {
-        orderNumber.setText("Order #" + order.getItems().hashCode());
-        confirmation.setManaged(true);
-        confirmation.setVisible(true);
+        if (order.getLength() > 0) {
+            orderNumber.setText("Order #" + Math.abs(order.getItems().hashCode()));
+            confirmation.setManaged(true);
+            confirmation.setVisible(true);
+        }
     }
 
     private void clearOrder() {
