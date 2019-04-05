@@ -35,23 +35,23 @@
 }
 
 .order-number {
-    -fx-background-color: #bf0000;
+    -fx-background-color: linear-gradient(to top, #800000, #cc1414);
 }
 
-.table-view{
+.table-view {
    -fx-background-color: transparent;
 }
 
-.table-view:focused{
+.table-view:focused {
     -fx-background-color: transparent;
 }
 
-.table-view .column-header-background{
+.table-view .column-header-background {
     -fx-background-color: linear-gradient(to top, #e09d00, #ffe14d);
     -fx-effect: dropshadow(gaussian, #00000077, 10, 0, 0, 5);
 }
 
-.table-view .column-header-background .label{
+.table-view .column-header-background .label {
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-family: henderson-slab-basic, sans-serif;
@@ -62,26 +62,42 @@
     -fx-background-color: transparent;
 }
 
-.table-view .table-cell{
-    -fx-font-family: henderson-slab-basic, sans-serif;
-    -fx-text-alignment: center;
-
+.table-view Button {
+    -fx-alignment: CENTER;
+    -fx-background-color: linear-gradient(to top, #800000, #cc1414);
+    -fx-effect: dropshadow(gaussian, #00000077, 5, 0, 0, 2.5);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-min-width: 25;
+    -fx-min-height: 25;
 }
 
-.table-row-cell{
+.table-view Button:hover {
+    -fx-effect: dropshadow(gaussian, #00000077, 10, 0, 0, 2.5);
+}
+
+.table-view Button:armed {
+    -fx-background-color: linear-gradient(to top, #800000, #cc1414), #EEEEEE77;
+}
+
+.table-view #price-column, .table-view #quantity-column {
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-font-family: henderson-slab-basic, sans-serif;
+    -fx-alignment: CENTER-LEFT;
+}
+
+.table-row-cell {
     -fx-background-color: -fx-table-cell-border-color, #fff4c1;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
 }
 
-.table-row-cell:odd{
+.table-row-cell:odd {
     -fx-background-color: -fx-table-cell-border-color, #ffffff;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #005797;
-    -fx-background-insets: 0;
-    -fx-background-radius: 1;
 }

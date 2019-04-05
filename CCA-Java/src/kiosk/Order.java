@@ -52,26 +52,11 @@ public class Order {
     public void addToOrder(String name, float price) {
         for (Item item : this.items) {
             if (item.getName().equals(name)) {
-                item.incrementQuantity(1);
+                item.setQuantity(item.getQuantity() + 1);
                 return; //leave the function, you're finished
             }
         }
         this.items.add(new Item(name, price));
-    }
-
-    /**
-     * Removes the food / drink item from the user's order, by
-     * removing the corresponding <code>Item</code> object
-     * from the field <code>items</code>.
-     * @param name The name of the food or drink item to be removed.
-     */
-    public void removeFromOrder(String name) {
-        for (int i = 0; i < this.items.size(); i++) {
-            if (this.items.get(i).getName().equals(name)) {
-                this.items.remove(i);
-                return; //leave the function, you're finished
-            }
-        }
     }
 
     /**
@@ -84,5 +69,11 @@ public class Order {
         return total;
     }
   
-    public int getLength() { return this.items.size(); }
+    int getLength() {
+        int total = 0;
+        for (Item item : this.items) {
+            total += item.getQuantity();
+        }
+        return total;
+    }
 }
