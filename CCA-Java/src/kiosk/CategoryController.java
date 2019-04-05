@@ -3,7 +3,6 @@ package kiosk;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -18,7 +17,6 @@ import kiosk.loadIns.CategoryItemController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static kiosk.Main.main;
 import static kiosk.Main.order;
 
 public class CategoryController implements Initializable {
@@ -90,7 +88,10 @@ public class CategoryController implements Initializable {
 
     private void viewOrder() {
         Stage primaryStage = (Stage)root.getScene().getWindow();
-        Main.getOrderController().refreshTable();
+        OrderController controller = Main.getOrderController();
+        // Close the sidebar that was left open when you left
+        try { controller.root.getChildren().remove(OrderController.sideBar); }
+        catch (NullPointerException e) { System.out.println("null"); }
         primaryStage.setScene(Main.getOrderScreen());
     }
 }

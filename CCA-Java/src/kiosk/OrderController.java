@@ -16,25 +16,18 @@ import static kiosk.Main.order;
 
 public class OrderController implements Initializable {
     @FXML AnchorPane root;
-    @FXML TableView orderTable;
+    @FXML TableView<Item> orderTable;
     @FXML Button hamburger;
 
     static AnchorPane sideBar;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        refreshTable();
+        refreshTable(orderTable);
         hamburger.setOnAction(event -> openSideMenu());
     }
 
-    void refreshTable() {
-        orderTable = generateTable();
-        System.out.println(orderTable);
-    }
-
-    private TableView<Item> generateTable() {
-        TableView<Item> table = new TableView<>();
-
+    private void refreshTable(TableView<Item> table) {
         //Name column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setMinWidth(200);
@@ -53,13 +46,14 @@ public class OrderController implements Initializable {
         /* Create the table */
         table.setItems(order.getItems());
 
+        nameColumn.setMaxWidth(1F * Integer.MAX_VALUE * 70);
+        priceColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
+        quantityColumn.setMaxWidth(1F * Integer.MAX_VALUE * 15);
+
         /* Add columns (don't use addAll to avoid issue with unchecked generics) */
         table.getColumns().add(nameColumn);
         table.getColumns().add(priceColumn);
         table.getColumns().add(quantityColumn);
-
-        System.out.println(table);
-        return table;
     }
 
     private void openSideMenu() {
