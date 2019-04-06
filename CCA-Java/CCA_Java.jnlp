@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="CCA_Java.jnlp">
+  <information>
+    <title>Kiosk</title>
+    <vendor>Unknown</vendor>
+    <description>CCA-Java</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="CCA_Java.jar" size="15003783" download="eager" />
+    <jar href="sqlite-jdbc-3.27.2.1.jar" size="6012107" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="kiosk.Main"  name="CCA-Java" />
+  <update check="background"/>
+</jnlp>
