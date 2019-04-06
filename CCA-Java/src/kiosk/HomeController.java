@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * The HomeController Class is the controller for the screen the user first sees. It is associated
+ * with the <code>home.fxml</code> file. It loads in several instances of <code>HomeItemController</code>
+ * to fill the screen with.
+ */
 public class HomeController implements Initializable {
     /**
      * The height of the banner on each screen. This is equal
@@ -58,8 +63,6 @@ public class HomeController implements Initializable {
 
     /**
      * Initializes the home screen.
-     * @param location
-     * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -91,8 +94,7 @@ public class HomeController implements Initializable {
     }
 
     /**
-     * Opens the navigation drawer. This method is called when the user presses
-     * the hamburger button.
+     * Opens the navigation drawer. This method is called when the user presses the hamburger button.
      */
     @FXML
     public void openSideMenu() {

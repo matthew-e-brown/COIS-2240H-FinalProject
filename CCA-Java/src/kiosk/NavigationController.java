@@ -37,8 +37,6 @@ public class NavigationController implements Initializable {
 
     /**
      * Initializes the navigation drawer. Generates the buttons when the navigation drawer is opened.
-     * @param location
-     * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {

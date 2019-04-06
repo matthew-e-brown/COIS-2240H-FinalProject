@@ -7,6 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import kiosk.Main;
 
+/**
+ * This controller (related to <code>homeItem.fxml</code>)
+ */
 public class HomeItemController {
     public static final int IMAGE_WIDTH = 250;
     public static final int IMAGE_HEIGHT = 275;

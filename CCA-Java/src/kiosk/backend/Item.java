@@ -70,7 +70,8 @@ public class Item {
     public String getName() { return this.name; }
   
     /**
-     * Gets the price of the food or drink item.
+     * Gets the price of the food or drink item. Called by the CellValueFactory in
+     * <code>OrderController.java</code> to format the price properly.
      *
      * @return String The price of the food or drink item, formatted as local currency.
      */

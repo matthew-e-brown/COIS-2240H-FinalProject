@@ -32,7 +32,7 @@ public class Order {
     /**
      * Resets the user's order, by clearing all <code>Item</code> objects from the <code>items</code> field.
      */
-    public void resetOrder() { this.items = FXCollections.observableArrayList(); }
+    void resetOrder() { this.items = FXCollections.observableArrayList(); }
 
     /**
      * Adds food / drink item to the user's order. If the
@@ -63,7 +63,7 @@ public class Order {
      * Calculates the cost of the user's order before tax (the subtotal).
      * @return float The subtotal of the user's order, before taxes are added.
      */
-    public float calculateSubtotal() {
+    float calculateSubtotal() {
         float total = 0;
         for (Item item : this.items) { total += item.getPrice() * item.getQuantity(); }
         return total;

@@ -91,6 +91,10 @@ public class Main extends Application {
 
     public static void main(String[] args) { launch(args); }
 
+    /**
+     * Simply triggers the splash screen back onto the display. Nothing else is required to
+     * restart the program.
+     */
     static void resetKiosk(Stage primaryStage) {
         primaryStage.setScene(splashScreen);
     }

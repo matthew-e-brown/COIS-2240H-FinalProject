@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -23,7 +22,8 @@ import static kiosk.Main.order;
 
 /**
  * The CategoryController Class is the controller for the category screens. It is associated
- * with the category.fxml file.
+ * with the <code>category.fxml</code> file. It loads several instances of <code>CategoryItemController</code>
+ * to fill the screen with each category.
  */
 public class CategoryController implements Initializable {
     /**
@@ -39,13 +39,13 @@ public class CategoryController implements Initializable {
      */
     @FXML Button orderButton;
     /**
-     * The grid which contains the 6 categories
+     * The grid which contains the 6 categories.
      */
     @FXML GridPane typesGrid;
     /**
-     *
+     * The Pane which displays the number of items the user has added to their order.
      */
-    @FXML Pane numberPane;
+    @FXML StackPane numberPane;
     /**
      * Contains the number of food or drink items currently in the user's order.
      */
@@ -74,8 +74,6 @@ public class CategoryController implements Initializable {
 
     /**
      * Initializes the Category screen for the given category.
-     * @param location
-     * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -139,8 +137,7 @@ public class CategoryController implements Initializable {
     }
 
     /**
-     * Increases the number in the red circle on top of the "View Order" button.
-     * This circle displays the number of items currently in the user's order.
+     * Increases the number in <code>numberPane</code> on top of the "View Order" button.
      * This method is invoked any time a user adds to their order.
      */
     public void incrementOrderIcon() {

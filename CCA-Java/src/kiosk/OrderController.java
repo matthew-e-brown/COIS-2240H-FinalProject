@@ -21,7 +21,7 @@ import static kiosk.Main.order;
 
 /**
  * The OrderController Class controls the order screen. It is associated with the
- * order.fxml file.
+ * <code>order.fxml</code> file.
  */
 public class OrderController implements Initializable {
     /**
@@ -40,9 +40,22 @@ public class OrderController implements Initializable {
      * The Y-position of the "total" text field on the order screen.
      */
     public static final int TOTAL_POS = HST_POS + OBJECT_SIDE_OFFSET;
+    /**
+     * The width of the confirmation popup.
+     */
     public static final int POPUP_WIDTH = (int)(Main.HALF_WIDTH * 1.35);
+    /**
+     * The height of the confirmation popup.
+     */
     public static final int POPUP_HEIGHT = (int)(Main.QUARTER_HEIGHT * 1.35);
+    /**
+     * The distance that the confirmation popup is from the sides of the window.
+     */
     public static final int ANCHOR_SIDE_DISTANCE = Main.HALF_WIDTH - POPUP_WIDTH / 2;
+    /**
+     * The distance that the top and bottom of the confirmation popup are from the top and
+     * bottom respectively of the window. The confirmation popup is centered.
+      */
     public static final int ANCHOR_TOP_BOTTOM_DISTANCE = Main.HEIGHT / 2 - POPUP_HEIGHT / 2;
 
     /**
@@ -66,8 +79,20 @@ public class OrderController implements Initializable {
      * clears the order table.
      */
     @FXML Button resetOrder;
+    /**
+     * The pane which holds text telling the user their order number, informs them
+     * that their request was shipped off to the kitchen, and offers a button to
+     * reset the program back to the Splash Screen.
+     */
     @FXML AnchorPane confirmation;
+    /**
+     * A reference to the <code>Text</code> object that holds the "Order #....." text.
+     */
     @FXML Text orderNumber;
+    /**
+     * A reference to the button that resets the program when the user is complete and
+     * has been shown their order number.
+     */
     @FXML Button continueButton;
 
     /**
@@ -90,8 +115,6 @@ public class OrderController implements Initializable {
 
     /**
      * Initializes the order screen.
-     * @param location
-     * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -110,7 +133,7 @@ public class OrderController implements Initializable {
 
     /**
      * Generates the table which displays the items currently in the user's order.
-     * @param table A TableView of Items
+     * @param table A TableView of Items to be filled with data from the <code>oder.getItems()</code> method.
      */
     private void generateTable(TableView<Item> table) {
         // Create a list of the Items currently in the user's order
@@ -170,7 +193,7 @@ public class OrderController implements Initializable {
     }
 
     /**
-     * Refreshes the subtotal, HST, and total for the user's order.
+     * Refreshes the subtotal, HST, and total for the user's order, and redraws the text on-screen.
      */
     public void refreshLabels() {
         NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
@@ -190,6 +213,10 @@ public class OrderController implements Initializable {
         root.getChildren().add(sideBar);
     }
 
+    /**
+     * Generates an order number for the user, then shows the pane holding the order number and the
+     * button which allows them to end their session.
+     */
     private void displayConfirmation() {
         if (order.getLength() > 0) {
             orderNumber.setText("Order #" + Math.abs(order.getItems().hashCode()));
@@ -199,11 +226,16 @@ public class OrderController implements Initializable {
     }
 
     /**
-     * Clears the items in the user's order, then refreshes the table.
+     * Clears the items in the user's order, then refreshes the table and text-fields for prices.
      */
     private void clearOrder() {
         //Clear all items in order, then clear order table and refresh it
         order.resetOrder();
+
+        subtotal.setText("");
+        hst.setText("");
+        total.setText("");
+
         orderTable.getColumns().clear();
         generateTable(orderTable);
     }
