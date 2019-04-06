@@ -68,7 +68,14 @@ public class Order {
         for (Item item : this.items) { total += item.getPrice() * item.getQuantity(); }
         return total;
     }
-  
+
+    /**
+     * Gets the total number of food items in the user's order, by adding up the
+     * quantities of each Item in this instance. This method is used for determining
+     * which number to display in the red circle on the "View Order" button on the
+     * category screens.
+     * @return
+     */
     int getLength() {
         int total = 0;
         for (Item item : this.items) {

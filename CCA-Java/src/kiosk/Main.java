@@ -11,7 +11,13 @@ import kiosk.backend.Database;
 
 public class Main extends Application {
     /* Fields */
+    /**
+     * The instance of Database which allows the app to connect to master.db.
+     */
     public static Database DB = new Database("jdbc:sqlite:src/master.db");
+    /**
+     * The instance of Order which keeps track of the items in the user's order.
+     */
     public static Order order = new Order();
 
     /* Constants */

@@ -21,6 +21,10 @@ import java.util.ResourceBundle;
 
 import static kiosk.Main.order;
 
+/**
+ * The CategoryController Class is the controller for the category screens. It is associated
+ * with the category.fxml file.
+ */
 public class CategoryController implements Initializable {
     /**
      * The AnchorPane which contains all of the other nodes.
