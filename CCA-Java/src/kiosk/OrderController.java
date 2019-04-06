@@ -4,12 +4,11 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import kiosk.backend.Item;
 
 import java.net.URL;
@@ -41,6 +40,10 @@ public class OrderController implements Initializable {
      * The Y-position of the "total" text field on the order screen.
      */
     public static final int TOTAL_POS = HST_POS + OBJECT_SIDE_OFFSET;
+    public static final int POPUP_WIDTH = (int)(Main.HALF_WIDTH * 1.35);
+    public static final int POPUP_HEIGHT = (int)(Main.QUARTER_HEIGHT * 1.35);
+    public static final int ANCHOR_SIDE_DISTANCE = Main.HALF_WIDTH - POPUP_WIDTH / 2;
+    public static final int ANCHOR_TOP_BOTTOM_DISTANCE = Main.HEIGHT / 2 - POPUP_HEIGHT / 2;
 
     /**
      * The AnchorPane for the order screen in which all of the other nodes are contained.
@@ -63,6 +66,9 @@ public class OrderController implements Initializable {
      * clears the order table.
      */
     @FXML Button resetOrder;
+    @FXML AnchorPane confirmation;
+    @FXML Text orderNumber;
+    @FXML Button continueButton;
 
     /**
      * The TextField which displays the amount of HST (Harmonized Sales Tax) for the user's order.
@@ -94,6 +100,12 @@ public class OrderController implements Initializable {
         hamburger.setOnAction(event -> openSideMenu());
         resetOrder.setOnAction(event -> clearOrder());
         submitOrder.setOnAction(event -> displayConfirmation());
+        continueButton.setOnAction(event -> {
+            clearOrder();
+            confirmation.setVisible(false);
+            confirmation.setManaged(false);
+            Main.resetKiosk((Stage)root.getScene().getWindow());
+        });
     }
 
     /**
@@ -104,6 +116,7 @@ public class OrderController implements Initializable {
         // Create a list of the Items currently in the user's order
         ObservableList<Item> itemList = order.getItems();
         itemList.addListener((ListChangeListener<Item>) c -> refreshLabels());
+        table.setPlaceholder(new Label("Add some items to your order to see them here!"));
 
         //Name column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Name");
@@ -135,7 +148,7 @@ public class OrderController implements Initializable {
 
         // Set the column widths of the table
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(45f/100f)); //45%
+        nameColumn.prefWidthProperty().bind(table.widthProperty().multiply(44f/100f)); //45%
         priceColumn.prefWidthProperty().bind(table.widthProperty().multiply(20f/100f)); //20%
         quantityColumn.prefWidthProperty().bind(table.widthProperty().multiply(15f/100f)); //15%
         increaseColumn.prefWidthProperty().bind(table.widthProperty().multiply(10f/100f)); //10%
@@ -177,7 +190,13 @@ public class OrderController implements Initializable {
         root.getChildren().add(sideBar);
     }
 
-    private void displayConfirmation() { System.out.println("Order received"); }
+    private void displayConfirmation() {
+        if (order.getLength() > 0) {
+            orderNumber.setText("Order #" + Math.abs(order.getItems().hashCode()));
+            confirmation.setManaged(true);
+            confirmation.setVisible(true);
+        }
+    }
 
     /**
      * Clears the items in the user's order, then refreshes the table.
